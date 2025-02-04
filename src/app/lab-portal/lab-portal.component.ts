@@ -11,6 +11,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { PhoneMaskDirective } from '../phone-mask.directive';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { DateOnlyDirective } from '../date-mask.directive';
 
 
 
@@ -21,7 +24,7 @@ import { PhoneMaskDirective } from '../phone-mask.directive';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-  NgIf,SsnMaskDirective, MatToolbarModule, MatMenuModule, MatDividerModule, MatIconModule, PhoneMaskDirective],
+  NgIf,SsnMaskDirective, MatToolbarModule, MatMenuModule, MatDividerModule, MatIconModule, PhoneMaskDirective, MatDatepickerModule, MatNativeDateModule, DateOnlyDirective],
   selector: 'app-lab-portal',
   templateUrl: './lab-portal.component.html',
   styleUrls: ['./lab-portal.component.scss'],
@@ -41,7 +44,8 @@ export class LabPortalComponent implements OnInit {
     this.userForm = new FormGroup({
       ssn: new FormControl('', [Validators.required]),
       phone: new FormControl('', [Validators.required]),
-      comments: new FormControl('', [Validators.required, Validators.maxLength(500)])
+      comments: new FormControl('', [Validators.required, Validators.maxLength(500)]),
+      date: new FormControl('', [Validators.required, Validators.min(new Date(1900, 0, 1).getTime()), Validators.max(new Date(2100, 11, 31).getTime())])
     });
   }
 

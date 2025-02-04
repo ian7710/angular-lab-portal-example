@@ -65,6 +65,23 @@
       </mat-error>
     </mat-form-field>
 
+     <!-- Date Input -->
+     <mat-form-field appearance="outline">
+      <mat-label>Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date" placeholder="MM/DD/YYYY" appDateMask appDateOnly>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker startView="multi-year" panelClass="custom-datepicker"></mat-datepicker>
+      <mat-error *ngIf="userForm.get('date')?.hasError('required')">
+        Date must be valid and is required.
+      </mat-error>
+      <mat-error *ngIf="userForm.get('date')?.hasError('matDatepickerMin')">
+        Date cannot be earlier than the allowed minimum.
+      </mat-error>
+      <mat-error *ngIf="userForm.get('date')?.hasError('matDatepickerMax')">
+        Date cannot be later than the allowed maximum.
+      </mat-error>
+    </mat-form-field>
+
     <!-- Multi-line Text Area -->
     <mat-form-field appearance="outline">
       <mat-label>Comments</mat-label>
