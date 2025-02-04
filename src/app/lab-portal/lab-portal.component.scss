@@ -1,111 +1,175 @@
 /* Navigation Toolbar */
 .nav-toolbar {
-    background: lightslategrey; /* Material Blue */
-    color: white;
-    padding: 0 16px;
-    display: flex;
-    align-items: center;
-    height: 64px;
-  }
-  
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    flex-grow: 1;
-  }
-  
-  /* Navigation Buttons */
-  .nav-button {
-    font-size: 1rem;
-    font-weight: 500;
-    color: white;
-    margin-right: 16px;
-    text-transform: uppercase;
-  }
-  
-  .nav-button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-  
-  /* Dropdown Menu Styling */
-  .custom-menu {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-    min-width: 200px;
-  }
-  
-  .custom-menu-item {
-    font-size: 1rem;
-    padding: 10px 20px;
-    color: #333;
-  }
-  
-  .custom-menu-item:hover {
-    background-color: #f1f1f1;
-  }
-  
-  /* Form Styling */
-  .form-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    max-width: 400px;
-    margin: 20px auto;
-  }
-  
-  .ssn-output {
-    text-align: center;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-  
-  /* Form Container */
+  background: lightslategrey; /* Consistent theme color */
+  color: white;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  height: 64px;
+}
+
+/* Logo */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  flex-grow: 1;
+}
+
+/* Navigation Buttons */
+.nav-button {
+  font-size: 1rem;
+  font-weight: 500;
+  color: white !important;
+  margin-right: 16px;
+  text-transform: uppercase;
+}
+
+.nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Dropdown Menu Styling */
+.custom-menu {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  min-width: 200px;
+}
+
+.custom-menu-item {
+  font-size: 1rem;
+  padding: 10px 20px;
+  color: #333;
+}
+
+.custom-menu-item:hover {
+  background-color: #f1f1f1;
+}
+
+/* Form Container */
 .form-container {
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 20px;
-    background: #f5f5f5; /* Light Gray Background */
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* CSS Grid Layout */
-  .form-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    justify-items: center;
-  }
-  
-  /* Material Form Fields */
-  mat-form-field {
-    width: 100%;
-  }
-  
-  /* Submit Button */
-  .submit-btn {
-    width: 100%;
-    max-width: 200px;
-  }
-  
-  /* Output Text */
-  .output-text {
-    text-align: center;
-    font-weight: bold;
-    margin-top: 10px;
+  max-width: 1000px; /* Increased width for better UI on larger screens */
+  margin: 40px auto;
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 20px 0 10px;
+  color: #333;
+}
+
+/* Form Layout */
+.form-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Form Row: Places sections side by side */
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Each Section */
+.form-section {
+  flex: 1;
+  min-width: 350px; /* Adjust for responsiveness */
+}
+
+/* Ensuring Form Fields are Full Width */
+mat-form-field {
+  width: 100%;
+}
+
+/* Small Input Fields (City, State, ZIP) */
+.form-item {
+  flex: 1;
+  min-width: 150px;
+}
+
+/* Submit Button */
+.submit-btn {
+  width: 100%;
+  max-width: 200px;
+  margin-top: 10px;
+  align-self: center;
+}
+
+/* Output Text */
+.output-text {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 800px) {
+  .form-row {
+      flex-direction: column;
   }
 
-  .nav-button {
-    color: white !important;
+  .form-section {
+      min-width: 100%;
   }
+}
 
-  .section-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 20px 0 10px;
-    color: #333;
+.half-width {
+  width: 50%;
+  min-width: 200px; /* Prevents shrinking too much */
+}
+
+.nav-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 16px;
+}
+
+.mobile-menu-button {
+  display: none;
+}
+
+/* Hide desktop menu on smaller screens */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
   }
   
-  
-  
+  .mobile-menu-button {
+    display: block;
+  }
+}
+
+
+
+.mobile-menu {
+  width: 250px;
+  padding: 16px;
+}
+
+.close-button {
+  width: 100%;
+  text-align: left;
+}
+
+
+
+
+
+
+
+

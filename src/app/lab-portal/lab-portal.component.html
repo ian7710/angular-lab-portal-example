@@ -1,7 +1,13 @@
 <!-- Navigation Menu -->
 <mat-toolbar class="nav-toolbar">
-    <span class="logo">Lab Portal</span>
+  <button mat-icon-button class="mobile-menu-button">
+    <mat-icon>menu</mat-icon>
+  </button>
 
+  <span class="logo">Lab Portal</span>
+
+  <!-- Desktop Menu -->
+  <div class="nav-links">
     <button mat-button [matMenuTriggerFor]="menu1" class="nav-button">Patient</button>
     <button mat-button [matMenuTriggerFor]="menu2" class="nav-button">Insurance</button>
     <button mat-button [matMenuTriggerFor]="menu2" class="nav-button">General</button>
@@ -9,100 +15,154 @@
     <button mat-button [matMenuTriggerFor]="menu2" class="nav-button">Test</button>
     <button mat-button [matMenuTriggerFor]="menu2" class="nav-button">ABN</button>
     <button mat-button [matMenuTriggerFor]="menu2" class="nav-button">Schedule</button>
-
-    <!-- Dropdown Menus -->
-    <mat-menu #menu1="matMenu" class="custom-menu">
-      <button mat-menu-item class="custom-menu-item">Feature 1</button>
-      <button mat-menu-item class="custom-menu-item">Feature 2</button>
-      <mat-divider></mat-divider>
-      <button mat-menu-item class="custom-menu-item">Feature 3</button>
-    </mat-menu>
-
-    <mat-menu #menu2="matMenu" class="custom-menu">
-      <button mat-menu-item class="custom-menu-item">Service 1</button>
-      <button mat-menu-item class="custom-menu-item">Service 2</button>
-      <mat-divider></mat-divider>
-      <button mat-menu-item class="custom-menu-item">Service 3</button>
-    </mat-menu>
+  </div>
 </mat-toolbar>
+
+<!-- Mobile Sidenav -->
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="over" class="mobile-menu">
+    <button mat-button (click)="sidenav.close()" class="close-button">
+      <mat-icon>close</mat-icon>
+    </button>
+    <button mat-button [matMenuTriggerFor]="menu1" class="nav-button">Patient</button>
+    <button mat-button [matMenuTriggerFor]="menu2" class="nav-button">Insurance</button>
+    <button mat-button [matMenuTriggerFor]="menu2" class="nav-button">General</button>
+    <button mat-button [matMenuTriggerFor]="menu2" class="nav-button">Diagnosis</button>
+    <button mat-button [matMenuTriggerFor]="menu2" class="nav-button">Test</button>
+    <button mat-button [matMenuTriggerFor]="menu2" class="nav-button">ABN</button>
+    <button mat-button [matMenuTriggerFor]="menu2" class="nav-button">Schedule</button>
+  </mat-sidenav>
+</mat-sidenav-container>
+
+<!-- Dropdown Menus -->
+<mat-menu #menu1="matMenu" class="custom-menu">
+  <button mat-menu-item class="custom-menu-item">Feature 1</button>
+  <button mat-menu-item class="custom-menu-item">Feature 2</button>
+  <mat-divider></mat-divider>
+  <button mat-menu-item class="custom-menu-item">Feature 3</button>
+</mat-menu>
+
+<mat-menu #menu2="matMenu" class="custom-menu">
+  <button mat-menu-item class="custom-menu-item">Service 1</button>
+  <button mat-menu-item class="custom-menu-item">Service 2</button>
+  <mat-divider></mat-divider>
+  <button mat-menu-item class="custom-menu-item">Service 3</button>
+</mat-menu>
+
 
 <!-- Form Container -->
 <div class="form-container">
-  <form [formGroup]="userForm" (ngSubmit)="submitForm()" class="form-grid">
+  <form [formGroup]="userForm" (ngSubmit)="submitForm()" class="form-layout">
 
-    <!-- SSN Input -->
-    <mat-form-field appearance="outline">
-      <mat-label>Social Security Number</mat-label>
-      <input matInput type="text"
-             placeholder="XXX-XX-XXXX"
-             appSsnMask
-             formControlName="ssn"
-             minlength="9"
-             maxlength="11">
-      <mat-error *ngIf="userForm.get('ssn')?.hasError('required')">
-        SSN is required.
-      </mat-error>
-      <mat-error *ngIf="userForm.get('ssn')?.hasError('pattern')">
-        Please enter a valid SSN format (XXX-XX-XXXX).
-      </mat-error>
-    </mat-form-field>
+    <!-- Row for Personal & Address Information -->
+    <div class="form-row">
 
-    <!-- Phone Number Input -->
-    <mat-form-field appearance="outline">
-      <mat-label>Phone Number</mat-label>
-      <mat-icon matPrefix>phone</mat-icon>
-      <input matInput type="text"
-             placeholder="(XXX) XXX-XXXX"
-             appPhoneMask
-             formControlName="phone"
-             minlength="10"
-             maxlength="14">
-      <mat-error *ngIf="userForm.get('phone')?.hasError('required')">
-        Phone number is required.
-      </mat-error>
-      <mat-error *ngIf="userForm.get('phone')?.hasError('pattern')">
-        Please enter a valid phone number in (XXX) XXX-XXXX format.
-      </mat-error>
-    </mat-form-field>
+      <!-- Personal Information Section -->
+      <div class="form-section">
+        <h3>Personal Information</h3>
 
-     <!-- Date Input -->
-     <mat-form-field appearance="outline">
-      <mat-label>Date</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="date" placeholder="MM/DD/YYYY" appDateMask appDateOnly>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker startView="multi-year" panelClass="custom-datepicker"></mat-datepicker>
-      <mat-error *ngIf="userForm.get('date')?.hasError('required')">
-        Date must be valid and is required.
-      </mat-error>
-      <mat-error *ngIf="userForm.get('date')?.hasError('matDatepickerMin')">
-        Date cannot be earlier than the allowed minimum.
-      </mat-error>
-      <mat-error *ngIf="userForm.get('date')?.hasError('matDatepickerMax')">
-        Date cannot be later than the allowed maximum.
-      </mat-error>
-    </mat-form-field>
+        <!-- SSN Input -->
+        <mat-form-field appearance="outline" class="spaced-field">
+          <mat-label>Social Security Number</mat-label>
+          <input matInput type="text" placeholder="XXX-XX-XXXX" appSsnMask formControlName="ssn" minlength="9"
+            maxlength="11">
+          <mat-error *ngIf="userForm.get('ssn')?.hasError('required')">
+            SSN is required.
+          </mat-error>
+        </mat-form-field>
 
-    <!-- Multi-line Text Area -->
-    <mat-form-field appearance="outline">
-      <mat-label>Comments</mat-label>
-      <textarea matInput formControlName="comments" minlength="5" maxlength="500" rows="4"></textarea>
-      <mat-error *ngIf="userForm.get('comments')?.hasError('required')">
-        Comments are required.
-      </mat-error>
-      <mat-error *ngIf="userForm.get('comments')?.hasError('maxlength')">
-        Comments cannot exceed 500 characters.
-      </mat-error>
-    </mat-form-field>
+        <!-- Phone Number Input -->
+        <mat-form-field appearance="outline">
+          <mat-label>Phone Number</mat-label>
+          <mat-icon matPrefix>phone</mat-icon>
+          <input matInput type="text" placeholder="(XXX) XXX-XXXX" appPhoneMask formControlName="phone" minlength="10"
+            maxlength="14">
+          <mat-error *ngIf="userForm.get('phone')?.hasError('required')">
+            Phone number is required.
+          </mat-error>
+          <mat-error *ngIf="userForm.get('phone')?.hasError('pattern')">
+            Please enter a valid phone number in (XXX) XXX-XXXX format.
+          </mat-error>
+        </mat-form-field>
+
+
+      </div>
+
+      <!-- Address Section -->
+      <div class="form-section">
+        <h3>Address Information</h3>
+
+        <!-- Street Address -->
+        <mat-form-field appearance="outline">
+          <mat-label>Street Address</mat-label>
+          <input matInput type="text" formControlName="street" placeholder="123 Main St">
+          <mat-error *ngIf="userForm.get('street')?.hasError('required')">
+            Street address is required.
+          </mat-error>
+        </mat-form-field>
+
+        <!-- City, State, Zip in one row -->
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-item">
+            <mat-label>City</mat-label>
+            <input matInput type="text" formControlName="city" placeholder="New York">
+            <mat-error *ngIf="userForm.get('city')?.hasError('required')">
+              City is required.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-item">
+            <mat-label>State</mat-label>
+            <input matInput type="text" formControlName="state" placeholder="NY">
+            <mat-error *ngIf="userForm.get('state')?.hasError('required')">
+              State is required.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-item">
+            <mat-label>Zip Code</mat-label>
+            <input matInput type="text" formControlName="zip" placeholder="10001">
+            <mat-error *ngIf="userForm.get('zip')?.hasError('required')">
+            Zip Code is required.
+            </mat-error>
+          </mat-form-field>
+
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Additional Information Section -->
+    <div class="form-section">
+      <h3>Additional Information</h3>
+
+      <!-- Date Input -->
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date" placeholder="MM/DD/YYYY" appDateMask
+          appDateOnly>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker startView="multi-year" panelClass="custom-datepicker"></mat-datepicker>
+        <mat-error *ngIf="userForm.get('date')?.hasError('required')">
+          Date must be valid and is required.
+        </mat-error>
+      </mat-form-field>
+
+
+      <!-- Multi-line Text Area -->
+      <mat-form-field appearance="outline">
+        <mat-label>Comments</mat-label>
+        <textarea matInput formControlName="comments" minlength="5" maxlength="500" rows="4"></textarea>
+        <mat-error *ngIf="userForm.get('comments')?.hasError('required')">
+          Comments are required.
+        </mat-error>
+      </mat-form-field>
+    </div>
 
     <!-- Submit Button -->
     <button mat-raised-button color="primary" type="submit" class="submit-btn" [disabled]="userForm.invalid">
       Submit
     </button>
   </form>
-
-  <!-- Display Entered Values -->
-  <p *ngIf="ssnValue" class="output-text">Entered SSN: {{ ssnValue }}</p>
-  <p *ngIf="phoneValue" class="output-text">Entered Phone: {{ phoneValue }}</p>
 </div>
-
-
