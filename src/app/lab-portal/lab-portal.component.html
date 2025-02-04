@@ -1,0 +1,54 @@
+<!-- Navigation Menu -->
+<mat-toolbar class="nav-toolbar">
+    <span class="logo">Lab Portal</span>
+
+    <button mat-button [matMenuTriggerFor]="menu1" class="nav-button">Features</button>
+    <button mat-button [matMenuTriggerFor]="menu2" class="nav-button">Services</button>
+
+    <!-- Dropdown Menus -->
+    <mat-menu #menu1="matMenu" class="custom-menu">
+      <button mat-menu-item class="custom-menu-item">Feature 1</button>
+      <button mat-menu-item class="custom-menu-item">Feature 2</button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item class="custom-menu-item">Feature 3</button>
+    </mat-menu>
+
+    <mat-menu #menu2="matMenu" class="custom-menu">
+      <button mat-menu-item class="custom-menu-item">Service 1</button>
+      <button mat-menu-item class="custom-menu-item">Service 2</button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item class="custom-menu-item">Service 3</button>
+    </mat-menu>
+</mat-toolbar>
+
+<!-- Form Container -->
+<div class="form-container">
+  <form [formGroup]="userForm" (ngSubmit)="submitForm()" class="form-grid">
+    
+    <!-- SSN Input -->
+    <mat-form-field appearance="outline">
+      <mat-label>Social Security Number</mat-label>
+      <input matInput type="text"
+             placeholder="XXX-XX-XXXX"
+             appSsnMask
+             formControlName="ssn">
+    </mat-form-field>
+
+    <!-- Phone Number Input -->
+    <mat-form-field appearance="outline">
+      <mat-label>Phone Number</mat-label>
+      <mat-icon matPrefix>phone</mat-icon>
+      <input matInput type="text"
+             placeholder="(XXX) XXX-XXXX"
+             appPhoneMask
+             formControlName="phone">
+    </mat-form-field>
+
+    <!-- Submit Button -->
+    <button mat-raised-button color="primary" type="submit" class="submit-btn">Submit</button>
+  </form>
+
+  <!-- Display Entered Values -->
+  <p *ngIf="ssnValue" class="output-text">Entered SSN: {{ ssnValue }}</p>
+  <p *ngIf="phoneValue" class="output-text">Entered Phone: {{ phoneValue }}</p>
+</div>

@@ -1,0 +1,10 @@
+<mat-menu #appMenu="matMenu">
+    <button mat-menu-item>Home</button>
+    <button mat-menu-item>Profile</button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item>Settings</button>
+  </mat-menu>
+  <button mat-button [matMenuTriggerFor]="appMenu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  
