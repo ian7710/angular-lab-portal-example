@@ -2,8 +2,13 @@
 <mat-toolbar class="nav-toolbar">
     <span class="logo">Lab Portal</span>
 
-    <button mat-button [matMenuTriggerFor]="menu1" class="nav-button">Features</button>
-    <button mat-button [matMenuTriggerFor]="menu2" class="nav-button">Services</button>
+    <button mat-button [matMenuTriggerFor]="menu1" class="nav-button">Patient</button>
+    <button mat-button [matMenuTriggerFor]="menu2" class="nav-button">Insurance</button>
+    <button mat-button [matMenuTriggerFor]="menu2" class="nav-button">General</button>
+    <button mat-button [matMenuTriggerFor]="menu2" class="nav-button">Diagnosis</button>
+    <button mat-button [matMenuTriggerFor]="menu2" class="nav-button">Test</button>
+    <button mat-button [matMenuTriggerFor]="menu2" class="nav-button">ABN</button>
+    <button mat-button [matMenuTriggerFor]="menu2" class="nav-button">Schedule</button>
 
     <!-- Dropdown Menus -->
     <mat-menu #menu1="matMenu" class="custom-menu">
@@ -24,7 +29,7 @@
 <!-- Form Container -->
 <div class="form-container">
   <form [formGroup]="userForm" (ngSubmit)="submitForm()" class="form-grid">
-    
+
     <!-- SSN Input -->
     <mat-form-field appearance="outline">
       <mat-label>Social Security Number</mat-label>
@@ -32,6 +37,12 @@
              placeholder="XXX-XX-XXXX"
              appSsnMask
              formControlName="ssn">
+      <mat-error *ngIf="userForm.get('ssn')?.hasError('required')">
+        SSN is required.
+      </mat-error>
+      <mat-error *ngIf="userForm.get('ssn')?.hasError('pattern')">
+        Please enter a valid SSN format (XXX-XX-XXXX).
+      </mat-error>
     </mat-form-field>
 
     <!-- Phone Number Input -->
@@ -42,13 +53,22 @@
              placeholder="(XXX) XXX-XXXX"
              appPhoneMask
              formControlName="phone">
+      <mat-error *ngIf="userForm.get('phone')?.hasError('required')">
+        Phone number is required.
+      </mat-error>
+      <mat-error *ngIf="userForm.get('phone')?.hasError('pattern')">
+        Please enter a valid phone number in (XXX) XXX-XXXX format.
+      </mat-error>
     </mat-form-field>
 
     <!-- Submit Button -->
-    <button mat-raised-button color="primary" type="submit" class="submit-btn">Submit</button>
+    <button mat-raised-button color="primary" type="submit" class="submit-btn" [disabled]="userForm.invalid">
+      Submit
+    </button>
   </form>
 
   <!-- Display Entered Values -->
   <p *ngIf="ssnValue" class="output-text">Entered SSN: {{ ssnValue }}</p>
   <p *ngIf="phoneValue" class="output-text">Entered Phone: {{ phoneValue }}</p>
 </div>
+
