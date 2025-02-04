@@ -40,7 +40,8 @@ export class LabPortalComponent implements OnInit {
   ngOnInit(): void {
     this.userForm = new FormGroup({
       ssn: new FormControl('', [Validators.required]),
-      phone: new FormControl('', [Validators.required])
+      phone: new FormControl('', [Validators.required]),
+      comments: new FormControl('', [Validators.required, Validators.maxLength(500)])
     });
   }
 
