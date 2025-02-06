@@ -14,6 +14,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DateOnlyDirective } from '../date-mask.directive';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
+import { PhoneNumberDirective } from '../ssn-mask-two.directive';
 
 
 
@@ -24,6 +25,7 @@ import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    PhoneNumberDirective,
   NgIf,SsnMaskDirective, MatToolbarModule, MatMenuModule, MatDividerModule, MatIconModule, PhoneMaskDirective, MatDatepickerModule, MatNativeDateModule, DateOnlyDirective, MatSidenavModule],
   selector: 'app-lab-portal',
   templateUrl: './lab-portal.component.html',
