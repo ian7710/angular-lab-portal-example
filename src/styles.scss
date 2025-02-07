@@ -2,3 +2,33 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Remove the gap in the top outline so it’s fully closed */
+.mat-form-field-appearance-outline .mat-form-field-outline-gap {
+    display: none;
+    width: 0 !important;
+  }
+  
+  /* Ensure the outline is drawn as a complete rectangle */
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    border-width: 1px !important;
+  }
+  
+  /* Remove the "notch" in the top line if it appears */
+  .mat-form-field-appearance-outline .mat-form-field-outline-start .mat-form-field-outline-notch {
+    border-top: none;
+  }
+  
+  /* Keep the label on top of the closed outline with a background.
+     Adjust transform/padding to fit your theme's spacing. */
+  .mat-form-field-appearance-outline .mat-form-field-label-wrapper {
+    background-color: #fff;
+    padding: 0 4px;
+    transform: translateY(-50%) scale(0.75);
+  }
+  
+  /* Ensure the label stays above the outline. May need z-index. */
+  .mat-form-field-appearance-outline .mat-form-field-flex {
+    z-index: 2;
+  }
+  

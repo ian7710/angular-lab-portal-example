@@ -49,37 +49,36 @@
   <button mat-menu-item class="custom-menu-item">Service 3</button>
 </mat-menu>
 
-
-
-
-
-
 <mat-card>
-  <mat-card-title style="margin-bottom: 20px; margin-left: 20px; margin-top: 10px;">Patient Information</mat-card-title>
+  <mat-card-title style="margin-bottom: 20px; margin-left: 20px; margin-top: 10px;">
+    Patient Information
+  </mat-card-title>
   <mat-card-content>
     <!-- Begin Reactive Form -->
     <form [formGroup]="patientForm" (ngSubmit)="onSave()">
       <!-- Outer grid: two columns -->
       <div class="patient-grid-container">
-        
+
         <!-- LEFT COLUMN -->
         <div class="left-column">
 
-          <!-- Row 1: First / Last / Middle -->
+          <!-- Row 1: First / Middle / Last -->
           <div class="grid-row grid-3-col">
             <!-- First Name -->
-            <!-- After (floats on focus/typing) -->
-<mat-form-field appearance="outline" floatLabel="auto">
-  <mat-label>First Name</mat-label>
-  <input
-    matInput
-    placeholder="Enter First Name"
-    formControlName="firstName"
-  />
-</mat-form-field>
+            <mat-form-field appearance="outline" floatLabel="auto">
+              <mat-label>First Name</mat-label>
+              <input
+                matInput
+                placeholder="Enter First Name"
+                formControlName="firstName"
+              />
+              <mat-error *ngIf="hasRequiredError('firstName')">
+                First Name is required
+              </mat-error>
+            </mat-form-field>
 
             <!-- Middle Name -->
-            <mat-form-field appearance="outline" floatLabel="always">
+            <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>Middle Name</mat-label>
               <input
                 matInput
@@ -92,7 +91,7 @@
             </mat-form-field>
 
             <!-- Last Name -->
-            <mat-form-field appearance="outline" floatLabel="always">
+            <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>Last Name</mat-label>
               <input
                 matInput
@@ -103,14 +102,12 @@
                 Last Name is required
               </mat-error>
             </mat-form-field>
-
-            
           </div>
 
           <!-- Row 2: DOB / Gender / SSN -->
           <div class="grid-row grid-3-col">
             <!-- DOB -->
-            <mat-form-field appearance="outline" floatLabel="always">
+            <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>Date of Birth</mat-label>
               <input
                 matInput
@@ -126,12 +123,9 @@
             </mat-form-field>
 
             <!-- Gender -->
-            <mat-form-field appearance="outline" floatLabel="always">
+            <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>Gender</mat-label>
-              <mat-select
-                placeholder="Select Gender"
-                formControlName="gender"
-              >
+              <mat-select placeholder="Select Gender" formControlName="gender">
                 <mat-option value="male">Male</mat-option>
                 <mat-option value="female">Female</mat-option>
                 <mat-option value="other">Other</mat-option>
@@ -142,7 +136,7 @@
             </mat-form-field>
 
             <!-- SSN -->
-            <mat-form-field appearance="outline" floatLabel="always">
+            <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>SSN</mat-label>
               <input
                 matInput
@@ -159,7 +153,7 @@
           <!-- Row 3: Race / Ethnicity -->
           <div class="grid-row grid-2-col">
             <!-- Race -->
-            <mat-form-field appearance="outline" floatLabel="always">
+            <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>Race</mat-label>
               <mat-select placeholder="Select Race" formControlName="race">
                 <mat-option value="asian">Asian</mat-option>
@@ -173,7 +167,7 @@
             </mat-form-field>
 
             <!-- Ethnicity -->
-            <mat-form-field appearance="outline" floatLabel="always">
+            <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>Ethnicity</mat-label>
               <input
                 matInput
@@ -188,7 +182,7 @@
 
           <!-- Row 4: Hospital MRN / Practice ID -->
           <div class="grid-row grid-2-col">
-            <mat-form-field appearance="outline" floatLabel="always">
+            <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>Hospital MRN</mat-label>
               <input
                 matInput
@@ -200,7 +194,7 @@
               </mat-error>
             </mat-form-field>
 
-            <mat-form-field appearance="outline" floatLabel="always">
+            <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>Practice ID</mat-label>
               <input
                 matInput
@@ -215,12 +209,9 @@
 
           <!-- Row 5: Billing Type -->
           <div class="grid-row grid-1-col">
-            <mat-form-field appearance="outline" floatLabel="always">
+            <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>Billing Type</mat-label>
-              <mat-select
-                placeholder="Select Billing Type"
-                formControlName="billingType"
-              >
+              <mat-select placeholder="Select Billing Type" formControlName="billingType">
                 <mat-option value="insurance">Insurance</mat-option>
                 <mat-option value="selfPay">Self Pay</mat-option>
               </mat-select>
@@ -232,7 +223,7 @@
 
           <!-- Row 6: Cell / Home Phone -->
           <div class="grid-row grid-2-col">
-            <mat-form-field appearance="outline" floatLabel="always">
+            <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>Cell Phone</mat-label>
               <input
                 matInput
@@ -245,7 +236,7 @@
               </mat-error>
             </mat-form-field>
 
-            <mat-form-field appearance="outline" floatLabel="always">
+            <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>Home Phone</mat-label>
               <input
                 matInput
@@ -261,7 +252,7 @@
 
           <!-- Row 7: Email -->
           <div class="grid-row grid-1-col">
-            <mat-form-field appearance="outline" floatLabel="always">
+            <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>Email Address</mat-label>
               <input
                 matInput
@@ -273,14 +264,13 @@
               </mat-error>
             </mat-form-field>
           </div>
-
         </div>
         <!-- END LEFT COLUMN -->
 
         <!-- RIGHT COLUMN: Address + Photo ID -->
         <div class="right-column">
 
-          <mat-form-field appearance="outline" floatLabel="always" class="full-width">
+          <mat-form-field appearance="outline" floatLabel="auto" class="full-width">
             <mat-label>Street Address</mat-label>
             <input
               matInput
@@ -292,7 +282,7 @@
             </mat-error>
           </mat-form-field>
 
-          <mat-form-field appearance="outline" floatLabel="always" class="full-width">
+          <mat-form-field appearance="outline" floatLabel="auto" class="full-width">
             <mat-label>Street Address (Line 2)</mat-label>
             <input
               matInput
@@ -306,7 +296,7 @@
 
           <!-- City / State / Zip -->
           <div class="grid-row grid-3-col">
-            <mat-form-field appearance="outline" floatLabel="always">
+            <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>City</mat-label>
               <input
                 matInput
@@ -318,12 +308,9 @@
               </mat-error>
             </mat-form-field>
 
-            <mat-form-field appearance="outline" floatLabel="always">
+            <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>State</mat-label>
-              <mat-select
-                placeholder="Select State"
-                formControlName="state"
-              >
+              <mat-select placeholder="Select State" formControlName="state">
                 <mat-option value="ca">CA</mat-option>
                 <mat-option value="ny">NY</mat-option>
                 <!-- etc. -->
@@ -333,7 +320,7 @@
               </mat-error>
             </mat-form-field>
 
-            <mat-form-field appearance="outline" floatLabel="always">
+            <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>Zip Code</mat-label>
               <input
                 matInput
@@ -371,9 +358,3 @@
     <!-- End Reactive Form -->
   </mat-card-content>
 </mat-card>
-
-
-
-
-
-
