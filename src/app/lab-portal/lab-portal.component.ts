@@ -15,6 +15,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { DateOnlyDirective } from '../date-mask.directive';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { PhoneNumberDirective } from '../ssn-mask-two.directive';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
 
 
 
@@ -26,6 +28,8 @@ import { PhoneNumberDirective } from '../ssn-mask-two.directive';
     MatInputModule,
     MatButtonModule,
     PhoneNumberDirective,
+    MatCardModule,
+    MatSelectModule,
   NgIf,SsnMaskDirective, MatToolbarModule, MatMenuModule, MatDividerModule, MatIconModule, PhoneMaskDirective, MatDatepickerModule, MatNativeDateModule, DateOnlyDirective, MatSidenavModule],
   selector: 'app-lab-portal',
   templateUrl: './lab-portal.component.html',
@@ -34,13 +38,66 @@ import { PhoneNumberDirective } from '../ssn-mask-two.directive';
 })
 export class LabPortalComponent implements OnInit {
 
+  patientForm: FormGroup;
+
+  // Example dropdown lists
+  races: string[] = ['American Indian or Alaska Native','Asian','Black or African American','White','Other'];
+  states: string[] = ['AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','...'];
+
+  constructor(private fb: FormBuilder) {
+    this.patientForm = this.fb.group({
+      // Make all fields required
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      middleName: ['', Validators.required],
+      dob: ['', Validators.required],
+      gender: ['', Validators.required],
+      ssn: ['', Validators.required],
+      race: ['', Validators.required],
+      ethnicity: ['', Validators.required],
+      hospitalMrn: ['', Validators.required],
+      practiceId: ['', Validators.required],
+      billingType: ['', Validators.required],
+      cellPhone: ['', Validators.required],
+      homePhone: ['', Validators.required],
+      email: ['', Validators.required],
+      address1: ['', Validators.required],
+      address2: ['', Validators.required],
+      city: ['', Validators.required],
+      state: ['', Validators.required],
+      zipCode: ['', Validators.required]
+    });
+  }
+
+  hasRequiredError(controlName: string): boolean {
+    const control = this.patientForm.get(controlName);
+    return !!control && control.hasError('required') && control.touched;
+  }
+
+  onSave() {
+    // Mark all controls as touched so errors show
+    this.patientForm.markAllAsTouched();
+
+    if (this.patientForm.valid) {
+      // Submit form data or handle successful validation
+      console.log('Form Submitted:', this.patientForm.value);
+    } else {
+      console.log('Form Invalid');
+    }
+  }
+
+  onCancel() {
+    // Handle cancel action (reset form, navigate away, etc.)
+    this.patientForm.reset();
+  }
+
+  
+
 
   puserForm!: FormGroup;
   ssnValue: string | null = '';
   phoneValue: string | null = '';
   userForm: any;
-
-  constructor() {}
 
   ngOnInit(): void {
     this.userForm = new FormGroup({
