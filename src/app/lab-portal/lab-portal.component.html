@@ -146,6 +146,7 @@
               <mat-label>SSN</mat-label>
               <input
                 matInput
+                appSsnMask
                 placeholder="###-##-####"
                 formControlName="ssn"
               />
@@ -235,6 +236,7 @@
               <mat-label>Cell Phone</mat-label>
               <input
                 matInput
+                appPhoneMask
                 placeholder="(###) ###-####"
                 formControlName="cellPhone"
               />
@@ -247,6 +249,7 @@
               <mat-label>Home Phone</mat-label>
               <input
                 matInput
+                appPhoneMask
                 placeholder="(###) ###-####"
                 formControlName="homePhone"
               />
@@ -349,7 +352,7 @@
           <!-- Front / Back placeholders -->
           <div class="photo-grid">
             <div class="photo-placeholder">Front</div>
-            <div class="photo-placeholder">Next</div>
+            <div class="photo-placeholder">Back</div>
           </div>
         </div>
         <!-- END RIGHT COLUMN -->
