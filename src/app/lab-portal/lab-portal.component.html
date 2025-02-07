@@ -128,6 +128,7 @@
               <mat-select placeholder="Select Gender" formControlName="gender">
                 <mat-option value="male">Male</mat-option>
                 <mat-option value="female">Female</mat-option>
+                <mat-option value="unknown">Unknown</mat-option>
                 <mat-option value="other">Other</mat-option>
               </mat-select>
               <mat-error *ngIf="hasRequiredError('gender')">
@@ -311,14 +312,63 @@
             <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>State</mat-label>
               <mat-select placeholder="Select State" formControlName="state">
-                <mat-option value="ca">CA</mat-option>
-                <mat-option value="ny">NY</mat-option>
-                <!-- etc. -->
+                <mat-option value="AL">Alabama</mat-option>
+                <mat-option value="AK">Alaska</mat-option>
+                <mat-option value="AZ">Arizona</mat-option>
+                <mat-option value="AR">Arkansas</mat-option>
+                <mat-option value="CA">California</mat-option>
+                <mat-option value="CO">Colorado</mat-option>
+                <mat-option value="CT">Connecticut</mat-option>
+                <mat-option value="DE">Delaware</mat-option>
+                <mat-option value="DC">District of Columbia</mat-option>
+                <mat-option value="FL">Florida</mat-option>
+                <mat-option value="GA">Georgia</mat-option>
+                <mat-option value="HI">Hawaii</mat-option>
+                <mat-option value="ID">Idaho</mat-option>
+                <mat-option value="IL">Illinois</mat-option>
+                <mat-option value="IN">Indiana</mat-option>
+                <mat-option value="IA">Iowa</mat-option>
+                <mat-option value="KS">Kansas</mat-option>
+                <mat-option value="KY">Kentucky</mat-option>
+                <mat-option value="LA">Louisiana</mat-option>
+                <mat-option value="ME">Maine</mat-option>
+                <mat-option value="MD">Maryland</mat-option>
+                <mat-option value="MA">Massachusetts</mat-option>
+                <mat-option value="MI">Michigan</mat-option>
+                <mat-option value="MN">Minnesota</mat-option>
+                <mat-option value="MS">Mississippi</mat-option>
+                <mat-option value="MO">Missouri</mat-option>
+                <mat-option value="MT">Montana</mat-option>
+                <mat-option value="NE">Nebraska</mat-option>
+                <mat-option value="NV">Nevada</mat-option>
+                <mat-option value="NH">New Hampshire</mat-option>
+                <mat-option value="NJ">New Jersey</mat-option>
+                <mat-option value="NM">New Mexico</mat-option>
+                <mat-option value="NY">New York</mat-option>
+                <mat-option value="NC">North Carolina</mat-option>
+                <mat-option value="ND">North Dakota</mat-option>
+                <mat-option value="OH">Ohio</mat-option>
+                <mat-option value="OK">Oklahoma</mat-option>
+                <mat-option value="OR">Oregon</mat-option>
+                <mat-option value="PA">Pennsylvania</mat-option>
+                <mat-option value="RI">Rhode Island</mat-option>
+                <mat-option value="SC">South Carolina</mat-option>
+                <mat-option value="SD">South Dakota</mat-option>
+                <mat-option value="TN">Tennessee</mat-option>
+                <mat-option value="TX">Texas</mat-option>
+                <mat-option value="UT">Utah</mat-option>
+                <mat-option value="VT">Vermont</mat-option>
+                <mat-option value="VA">Virginia</mat-option>
+                <mat-option value="WA">Washington</mat-option>
+                <mat-option value="WV">West Virginia</mat-option>
+                <mat-option value="WI">Wisconsin</mat-option>
+                <mat-option value="WY">Wyoming</mat-option>
               </mat-select>
               <mat-error *ngIf="hasRequiredError('state')">
                 State is required
               </mat-error>
             </mat-form-field>
+            
 
             <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>Zip Code</mat-label>
