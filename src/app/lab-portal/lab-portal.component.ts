@@ -12,11 +12,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { PhoneMaskDirective } from '../phone-mask.directive';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { DateOnlyDirective } from '../date-mask.directive';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { PhoneNumberDirective } from '../ssn-mask-two.directive';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
+import { ValidDateDirective } from '../date-mask.directive';
 
 
 
@@ -28,9 +28,10 @@ import { MatCardModule } from '@angular/material/card';
     MatInputModule,
     MatButtonModule,
     PhoneNumberDirective,
+    ValidDateDirective,
     MatCardModule,
     MatSelectModule,
-  NgIf,SsnMaskDirective, MatToolbarModule, MatMenuModule, MatDividerModule, MatIconModule, PhoneMaskDirective, MatDatepickerModule, MatNativeDateModule, DateOnlyDirective, MatSidenavModule],
+  NgIf,SsnMaskDirective, MatToolbarModule, MatMenuModule, MatDividerModule, MatIconModule, PhoneMaskDirective, MatDatepickerModule, MatNativeDateModule, MatSidenavModule],
   selector: 'app-lab-portal',
   templateUrl: './lab-portal.component.html',
   styleUrls: ['./lab-portal.component.scss'],

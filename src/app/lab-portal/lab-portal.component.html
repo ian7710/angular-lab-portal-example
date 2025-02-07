@@ -114,11 +114,12 @@
                 [matDatepicker]="picker"
                 placeholder="MM/DD/YYYY"
                 formControlName="dob"
+                validDate
               />
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
               <mat-error *ngIf="hasRequiredError('dob')">
-                Date of Birth is required
+                DOB is required and must be a valid Date.
               </mat-error>
             </mat-form-field>
 
