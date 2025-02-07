@@ -68,15 +68,26 @@
           <!-- Row 1: First / Last / Middle -->
           <div class="grid-row grid-3-col">
             <!-- First Name -->
+            <!-- After (floats on focus/typing) -->
+<mat-form-field appearance="outline" floatLabel="auto">
+  <mat-label>First Name</mat-label>
+  <input
+    matInput
+    placeholder="Enter First Name"
+    formControlName="firstName"
+  />
+</mat-form-field>
+
+            <!-- Middle Name -->
             <mat-form-field appearance="outline" floatLabel="always">
-              <mat-label>First Name</mat-label>
+              <mat-label>Middle Name</mat-label>
               <input
                 matInput
-                placeholder="Enter First Name"
-                formControlName="firstName"
+                placeholder="Enter Middle Name"
+                formControlName="middleName"
               />
-              <mat-error *ngIf="hasRequiredError('firstName')">
-                First Name is required
+              <mat-error *ngIf="hasRequiredError('middleName')">
+                Middle Name is required
               </mat-error>
             </mat-form-field>
 
@@ -93,18 +104,7 @@
               </mat-error>
             </mat-form-field>
 
-            <!-- Middle Name -->
-            <mat-form-field appearance="outline" floatLabel="always">
-              <mat-label>Middle Name</mat-label>
-              <input
-                matInput
-                placeholder="Enter Middle Name"
-                formControlName="middleName"
-              />
-              <mat-error *ngIf="hasRequiredError('middleName')">
-                Middle Name is required
-              </mat-error>
-            </mat-form-field>
+            
           </div>
 
           <!-- Row 2: DOB / Gender / SSN -->
