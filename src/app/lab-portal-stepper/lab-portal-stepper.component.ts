@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -23,8 +23,9 @@ import { OrderInformationBarComponent } from '../order-information-bar/order-inf
     MatFormFieldModule,
     MatInputModule,
     PatientInformationComponent,
-    OrderInformationBarComponent
+    OrderInformationBarComponent,
   ],
+  encapsulation: ViewEncapsulation.None
 })
 export class StepperOverviewExample {
   private _formBuilder = inject(FormBuilder);

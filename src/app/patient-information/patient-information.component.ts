@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
@@ -36,6 +36,7 @@ import { ValidDateDirective } from '../date-mask.directive';
   templateUrl: './patient-information.component.html',
   styleUrls: ['./patient-information.component.scss'],
   providers: [], // Correct way to provide ngx-mask
+  encapsulation: ViewEncapsulation.None
 })
 export class PatientInformationComponent implements OnInit {
 

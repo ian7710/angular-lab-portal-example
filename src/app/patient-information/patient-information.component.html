@@ -1,5 +1,5 @@
-<mat-card style="background-color: white;">
-  <mat-card-title style="margin-bottom: 20px; margin-left: 20px; margin-top: 10px;">
+<mat-card style="background-color: white; margin-top: 20px;">
+  <mat-card-title style="margin-bottom: 20px; margin-left: 20px; margin-top: 20px;">
     Patient Information
   </mat-card-title>
   <mat-card-content>
@@ -14,7 +14,7 @@
           <!-- Row 1: First / Middle / Last -->
           <div class="grid-row grid-3-col">
             <!-- First Name -->
-            <mat-form-field appearance="outline" floatLabel="auto">
+            <mat-form-field appearance="outline" floatLabel="auto" class="resized-form-field">
               <mat-label>First Name</mat-label>
               <input
                 matInput
@@ -27,7 +27,7 @@
             </mat-form-field>
 
             <!-- Middle Name -->
-            <mat-form-field appearance="outline" floatLabel="auto">
+            <mat-form-field appearance="outline" floatLabel="auto" class="resized-form-field">
               <mat-label>Middle Name</mat-label>
               <input
                 matInput
@@ -40,7 +40,7 @@
             </mat-form-field>
 
             <!-- Last Name -->
-            <mat-form-field appearance="outline" floatLabel="auto">
+            <mat-form-field appearance="outline" floatLabel="auto" class="resized-form-field">
               <mat-label>Last Name</mat-label>
               <input
                 matInput
@@ -56,7 +56,7 @@
           <!-- Row 2: DOB / Gender / SSN -->
           <div class="grid-row grid-3-col">
             <!-- DOB -->
-            <mat-form-field appearance="outline" floatLabel="auto">
+            <mat-form-field appearance="outline" floatLabel="auto" class="resized-form-field">
               <mat-label>Date of Birth</mat-label>
               <input
                 matInput
@@ -73,7 +73,7 @@
             </mat-form-field>
 
             <!-- Gender -->
-            <mat-form-field appearance="outline" floatLabel="auto">
+            <mat-form-field appearance="outline" floatLabel="auto" class="resized-form-field">
               <mat-label>Gender</mat-label>
               <mat-select placeholder="Select Gender" formControlName="gender">
                 <mat-option value="male">Male</mat-option>
@@ -87,7 +87,7 @@
             </mat-form-field>
 
             <!-- SSN -->
-            <mat-form-field appearance="outline" floatLabel="auto">
+            <mat-form-field appearance="outline" floatLabel="auto" class="resized-form-field">
               <mat-label>SSN</mat-label>
               <input
                 matInput
@@ -172,7 +172,22 @@
             </mat-form-field>
           </div>
 
-          <!-- Row 6: Cell / Home Phone -->
+          <!-- Row 6: Email -->
+          <div class="grid-row grid-1-col">
+            <mat-form-field appearance="outline" floatLabel="auto">
+              <mat-label>Email Address</mat-label>
+              <input
+                matInput
+                placeholder="example@email.com"
+                formControlName="email"
+              />
+              <mat-error *ngIf="hasRequiredError('email')">
+                Email Address is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <!-- Row 7: Cell / Home Phone -->
           <div class="grid-row grid-2-col">
             <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>Cell Phone</mat-label>
@@ -197,21 +212,6 @@
               />
               <mat-error *ngIf="hasRequiredError('homePhone')">
                 Home Phone is required
-              </mat-error>
-            </mat-form-field>
-          </div>
-
-          <!-- Row 7: Email -->
-          <div class="grid-row grid-1-col">
-            <mat-form-field appearance="outline" floatLabel="auto">
-              <mat-label>Email Address</mat-label>
-              <input
-                matInput
-                placeholder="example@email.com"
-                formControlName="email"
-              />
-              <mat-error *ngIf="hasRequiredError('email')">
-                Email Address is required
               </mat-error>
             </mat-form-field>
           </div>

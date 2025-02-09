@@ -1,45 +1,48 @@
-<!-- Order-information-bar -->
-<app-order-information-bar></app-order-information-bar>
+<div class="lab-stepper-container">
+  <!-- Order-information-bar -->
+  <app-order-information-bar></app-order-information-bar>
 
-<mat-stepper [linear]="isLinear" #stepper>
-  <!-- Step One -->
-  <mat-step label="General">
-    
-  </mat-step>
+  <!-- Stepper -->
+  <mat-stepper [linear]="isLinear" #stepper>
+    <!-- Step One -->
+    <mat-step label="General">
+      
+    </mat-step>
 
-  <!-- Step Two -->
-  <mat-step [stepControl]="firstFormGroup" label="Patient">
-    <app-patient-information></app-patient-information>
-  </mat-step>
+    <!-- Step Two -->
+    <mat-step [stepControl]="firstFormGroup" label="Patient">
+      <app-patient-information></app-patient-information>
+    </mat-step>
 
-  <!-- Step Three -->
-  <mat-step label="Insurance">
-    <p>Insurance</p>
-  </mat-step>
+    <!-- Step Three -->
+    <mat-step label="Insurance">
+      <p>Insurance</p>
+    </mat-step>
 
-  <!-- Step Four -->
-  <mat-step label="Guarantor">
-    
-  </mat-step>
+    <!-- Step Four -->
+    <mat-step label="Guarantor">
+      
+    </mat-step>
 
-  <!-- Step Five -->
-  <mat-step label="Diagnosis">
-    
-  </mat-step>
+    <!-- Step Five -->
+    <mat-step label="Diagnosis">
+      
+    </mat-step>
 
-  <!-- Step Six -->
-  <mat-step label="Test">
-    
-  </mat-step>
+    <!-- Step Six -->
+    <mat-step label="Test">
+      
+    </mat-step>
 
-  <!-- Step Seven -->
-  <mat-step label="Schedule">
-    
-  </mat-step>
+    <!-- Step Seven -->
+    <mat-step label="Schedule">
+      
+    </mat-step>
 
-  <!-- Step Eight -->
-  <mat-step label="Print">
-    
-  </mat-step>
-</mat-stepper>
+    <!-- Step Eight -->
+    <mat-step label="Print">
+      
+    </mat-step>
+  </mat-stepper>
+</div>
 
