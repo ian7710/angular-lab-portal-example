@@ -43,5 +43,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     
   }
   
+/* TEST: Force any mat-mdc outlined field with .resized-form-field to have a red border & yellow background. */
+.mat-form-field-outlined.resized-form-field {
+  background-color: yellow !important;
+  border: 2px solid red !important;
+}
   
   
