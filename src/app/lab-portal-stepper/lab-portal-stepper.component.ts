@@ -30,6 +30,7 @@ import { OrderInformationBarComponent } from '../order-information-bar/order-inf
 export class StepperOverviewExample {
   private _formBuilder = inject(FormBuilder);
 
+  // Adding these to the step control removes the icon that replaces the number on the step control
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });

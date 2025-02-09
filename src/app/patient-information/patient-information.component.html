@@ -347,9 +347,22 @@
 
       <!-- Action buttons -->
       <div class="actions-row">
+        <!-- Previous button -->
+        <button mat-raised-button color="accent" type="button" (click)="onPrevious()">
+          Previous
+        </button>
+
+        <!-- Hold button -->
+        <button mat-raised-button color="default" type="button" (click)="onHold">
+          Hold
+        </button>
+
+        <!-- Next button -->
         <button mat-raised-button color="primary" type="submit">
           Next
         </button>
+
+        <!-- Cancel button -->
         <button mat-raised-button color="warn" type="button" (click)="onCancel()">
           Cancel
         </button>

@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
@@ -17,6 +17,7 @@ import { PhoneNumberDirective } from '../ssn-mask-two.directive';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { ValidDateDirective } from '../date-mask.directive';
+import { MatStepper } from '@angular/material/stepper';
 
 
 
@@ -39,6 +40,10 @@ import { ValidDateDirective } from '../date-mask.directive';
   encapsulation: ViewEncapsulation.None
 })
 export class PatientInformationComponent implements OnInit {
+
+  // Add an Input property for the stepper
+  @Input()
+  stepper!: MatStepper;
 
   patientForm: FormGroup;
 
@@ -76,6 +81,7 @@ export class PatientInformationComponent implements OnInit {
     return !!control && control.hasError('required') && control.touched;
   }
 
+  // * Save form on submit and navigate to the next step
   onSave() {
     // Mark all controls as touched so errors show
     this.patientForm.markAllAsTouched();
@@ -83,6 +89,7 @@ export class PatientInformationComponent implements OnInit {
     if (this.patientForm.valid) {
       // Submit form data or handle successful validation
       console.log('Form Submitted:', this.patientForm.value);
+      this.stepper.next();
     } else {
       console.log('Form Invalid');
     }
@@ -93,7 +100,16 @@ export class PatientInformationComponent implements OnInit {
     this.patientForm.reset();
   }
 
-  
+  // Moves the user to the previous step in the stepper
+  onPrevious() {
+    // * Just call the stepper's previous() method
+    this.stepper.previous()
+  }
+
+  // #TODO Will add function for this button later
+  onHold() {
+    console.log('Form on hold...')
+  }
 
 
   puserForm!: FormGroup;

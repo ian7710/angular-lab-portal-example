@@ -5,13 +5,13 @@
   <!-- Stepper -->
   <mat-stepper [linear]="isLinear" #stepper>
     <!-- Step One -->
-    <mat-step label="General">
+    <mat-step [stepControl]="firstFormGroup" label="General">
       
     </mat-step>
 
     <!-- Step Two -->
-    <mat-step [stepControl]="firstFormGroup" label="Patient">
-      <app-patient-information></app-patient-information>
+    <mat-step [stepControl]="secondFormGroup" label="Patient" [editable]="true">
+      <app-patient-information [stepper]="stepper"></app-patient-information>
     </mat-step>
 
     <!-- Step Three -->
