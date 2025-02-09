@@ -1,0 +1,309 @@
+/* Navigation Toolbar */
+.nav-toolbar {
+  background: lightslategrey; /* Consistent theme color */
+  color: white;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  height: 64px;
+}
+
+/* Logo */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  flex-grow: 1;
+}
+
+/* Navigation Buttons */
+.nav-button {
+  font-size: 1rem;
+  font-weight: 500;
+  color: white !important;
+  margin-right: 16px;
+  text-transform: uppercase;
+}
+
+.nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Dropdown Menu Styling */
+.custom-menu {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  min-width: 200px;
+}
+
+.custom-menu-item {
+  font-size: 1rem;
+  padding: 10px 20px;
+  color: #333;
+}
+
+.custom-menu-item:hover {
+  background-color: #f1f1f1;
+}
+
+/* Form Container */
+.form-container {
+  max-width: 1000px; /* Increased width for better UI on larger screens */
+  margin: 40px auto;
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 20px 0 10px;
+  color: #333;
+}
+
+/* Form Layout */
+.form-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Form Row: Places sections side by side */
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Each Section */
+.form-section {
+  flex: 1;
+  min-width: 350px; /* Adjust for responsiveness */
+}
+
+/* Ensuring Form Fields are Full Width */
+mat-form-field {
+  width: 100%;
+}
+
+/* Small Input Fields (City, State, ZIP) */
+.form-item {
+  flex: 1;
+  min-width: 150px;
+}
+
+/* Submit Button */
+.submit-btn {
+  width: 100%;
+  max-width: 200px;
+  margin-top: 10px;
+  align-self: center;
+}
+
+/* Output Text */
+.output-text {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 800px) {
+  .form-row {
+      flex-direction: column;
+  }
+
+  .form-section {
+      min-width: 100%;
+  }
+}
+
+.half-width {
+  width: 30%;
+  min-width: 200px; /* Prevents shrinking too much */
+}
+
+.nav-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 16px;
+}
+
+.mobile-menu-button {
+  display: none;
+}
+
+/* Hide desktop menu on smaller screens */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  
+  .mobile-menu-button {
+    display: block;
+  }
+}
+
+
+
+.mobile-menu {
+  width: 250px;
+  padding: 16px;
+}
+
+.close-button {
+  width: 100%;
+  text-align: left;
+}
+
+
+/**************************************************************
+ * Desktop Layout (Default)
+ **************************************************************/
+ .patient-grid-container {
+  display: grid;
+  /* Two columns: left = 3fr (wider), right = 2fr (narrower) */
+  grid-template-columns: 3fr 2fr;
+  /* Increase this gap for more space in the middle on desktops */
+  column-gap: 4rem;
+  row-gap: 1rem;
+}
+
+.left-column,
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* vertical spacing between rows */
+}
+
+/* Nested row grids (some rows have 2 or 3 columns) */
+.grid-row {
+  display: grid;
+  gap: 1rem;
+}
+
+.grid-1-col {
+  grid-template-columns: 1fr;
+}
+
+.grid-2-col {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3-col {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Make certain fields (e.g. address lines) fill the full width. */
+.full-width {
+  width: 100%;
+}
+
+/* Photo placeholders side by side. */
+.photo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 100px;
+  border: 1px solid #aaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Action buttons row at the bottom */
+.actions-row {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+/**************************************************************
+ * Responsive Media Query: 
+ * Stack into one column if screen width is below 900px
+ **************************************************************/
+@media (max-width: 900px) {
+  .patient-grid-container {
+    grid-template-columns: 1fr; /* single column layout */
+    column-gap: 0;             /* remove horizontal gap */
+  }
+
+  /* Stack nested grids as well */
+  .grid-2-col, .grid-3-col {
+    grid-template-columns: 1fr; /* each row stacks vertically */
+  }
+
+  .photo-grid {
+    grid-template-columns: 1fr; 
+  }
+}
+
+/**************************************************************
+ * Optional: Additional mobile tweaks below 600px
+ **************************************************************/
+@media (max-width: 600px) {
+  /* Example: reduce card padding or fonts for very small screens */
+  mat-card {
+    padding: 1rem;
+  }
+  
+  mat-form-field {
+    font-size: 0.9rem;
+  }
+}
+
+
+
+
+/* 1) Remove gap in the top outline */
+.mat-mdc-form-field-outlined .mat-mdc-form-field-outline-gap {
+  display: none !important;
+  width: 0 !important;
+}
+
+/* 2) Make sure the outline draws fully */
+.mat-mdc-form-field-outlined .mat-mdc-form-field-outline {
+  border-width: 1px !important;
+  /* You may also need to set a border color if your theme doesn’t show properly */
+  border-color: currentColor !important;
+}
+
+/* 3) Remove the notch from the top outline (the "notched" outline) */
+.mat-mdc-form-field-outlined .mat-mdc-notched-outline {
+  border-top: none !important;
+}
+
+/* 4) Float the label above the border with a background */
+.mat-mdc-form-field-outlined .mat-mdc-floating-label {
+  background-color: #fff !important; /* or match your form background */
+  padding: 0 4px !important;
+}
+
+/* 5) Possibly adjust the label scale/position if it’s misaligned */
+.mat-mdc-form-field-outlined .mdc-floating-label--float-above {
+  /* This is the MDC class that floats the label. Adjust transform if needed. */
+  transform: translateY(-50%) scale(0.75) !important;
+}
+
+/* 6) Keep the label on top */
+.mat-mdc-form-field-outlined .mat-mdc-form-field-flex {
+  z-index: 2 !important;
+}
+
+
+

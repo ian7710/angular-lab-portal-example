@@ -1,0 +1,27 @@
+/* info-alert.component.css (or a global stylesheet) */
+
+/* Optional margin-bottom to mimic Bootstrap's .mb-4 class */
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+/* Style the mat-card to look “info-ish” */
+.info-alert {
+  background-color: #d9edf7; /* Light blue “info” background */
+  color: #31708f;            /* Darker “info” text color */
+  border: 1px solid #bce8f1; /* Subtle border to mimic alert-info */
+}
+
+/* The grid container that lays out each item in a row */
+.alert-grid {
+  display: grid;
+  grid-auto-flow: column;  /* Lay items in a single horizontal row */
+  column-gap: 8px;         /* Spacing between columns */
+  align-items: center;     /* Vertically center each grid cell */
+}
+
+/* Just an optional class to style the “|” separators if needed */
+.separator {
+  opacity: 0.6;
+  font-weight: 600;
+}

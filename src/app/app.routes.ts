@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LabPortalComponent } from './lab-portal/lab-portal.component';
+import { StepperOverviewExample } from './lab-portal-stepper/lab-portal-stepper.component';
 
 export const routes: Routes = [
-  { path: '', component: LabPortalComponent }, // Default page
+  { path: '', component: StepperOverviewExample }, // Default page
 ];
 
 @NgModule({
