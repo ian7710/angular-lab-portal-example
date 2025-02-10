@@ -124,30 +124,30 @@ export class InsuranceInformationFormComponent {
 
   ngOnInit(): void {
     this.userForm = new FormGroup({
-      // ssn: new FormControl('', [
-      //   Validators.required,
-      //   Validators.pattern(/^\d{3}-\d{2}-\d{4}$/) // Ensures SSN format (XXX-XX-XXXX)
-      // ]),
-      // phone: new FormControl('', [
-      //   Validators.required,
-      //   Validators.pattern(/^\(\d{3}\) \d{3}-\d{4}$/) // Ensures phone format (XXX) XXX-XXXX
-      // ]),
-      // street: new FormControl('', [Validators.required]), // ✅ Added missing control
-      // city: new FormControl('', [Validators.required]), // ✅ Added missing control
-      // state: new FormControl('', [Validators.required]), // ✅ Added missing control
-      // zip: new FormControl('', [
-      //   Validators.required,
-      //   Validators.pattern(/^\d{5}(-\d{4})?$/) // Ensures ZIP Code format (12345 or 12345-6789)
-      // ]), // ✅ Added missing control
-      // comments: new FormControl('', [
-      //   Validators.required,
-      //   Validators.maxLength(500)
-      // ]),
-      // date: new FormControl('', [
-      //   Validators.required,
-      //   Validators.min(new Date(1900, 0, 1).getTime()), // Ensures date is after Jan 1, 1900
-      //   Validators.max(new Date(2100, 11, 31).getTime()) // Ensures date is before Dec 31, 2100
-      // ])
+      ssn: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^\d{3}-\d{2}-\d{4}$/) // Ensures SSN format (XXX-XX-XXXX)
+      ]),
+      phone: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^\(\d{3}\) \d{3}-\d{4}$/) // Ensures phone format (XXX) XXX-XXXX
+      ]),
+      street: new FormControl('', [Validators.required]), // ✅ Added missing control
+      city: new FormControl('', [Validators.required]), // ✅ Added missing control
+      state: new FormControl('', [Validators.required]), // ✅ Added missing control
+      zip: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^\d{5}(-\d{4})?$/) // Ensures ZIP Code format (12345 or 12345-6789)
+      ]), // ✅ Added missing control
+      comments: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(500)
+      ]),
+      date: new FormControl('', [
+        Validators.required,
+        Validators.min(new Date(1900, 0, 1).getTime()), // Ensures date is after Jan 1, 1900
+        Validators.max(new Date(2100, 11, 31).getTime()) // Ensures date is before Dec 31, 2100
+      ])
     });
   }
 
