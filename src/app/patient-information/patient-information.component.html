@@ -173,7 +173,7 @@
           </div>
 
           <!-- Row 6: Email -->
-          <div class="grid-row grid-1-col">
+          <!-- <div class="grid-row grid-1-col">
             <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>Email Address</mat-label>
               <input
@@ -185,10 +185,22 @@
                 Email Address is required
               </mat-error>
             </mat-form-field>
-          </div>
+          </div> -->
 
-          <!-- Row 7: Cell / Home Phone -->
-          <div class="grid-row grid-2-col">
+          <!-- Row 7: Email / Cell / Home Phone -->
+          <div class="grid-row grid-3-col">
+            <mat-form-field appearance="outline" floatLabel="auto">
+              <mat-label>Email Address</mat-label>
+              <input
+                matInput
+                placeholder="example@email.com"
+                formControlName="email"
+              />
+              <mat-error *ngIf="hasRequiredError('email')">
+                Email Address is required
+              </mat-error>
+            </mat-form-field>
+
             <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>Cell Phone</mat-label>
               <input
@@ -246,7 +258,7 @@
           </mat-form-field>
 
           <!-- City / State / Zip -->
-          <div class="grid-row grid-3-col">
+          <div class="grid-row grid-3-col larger-city">
             <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>City</mat-label>
               <input
@@ -262,57 +274,57 @@
             <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>State</mat-label>
               <mat-select placeholder="Select State" formControlName="state">
-                <mat-option value="AL">Alabama</mat-option>
-                <mat-option value="AK">Alaska</mat-option>
-                <mat-option value="AZ">Arizona</mat-option>
-                <mat-option value="AR">Arkansas</mat-option>
-                <mat-option value="CA">California</mat-option>
-                <mat-option value="CO">Colorado</mat-option>
-                <mat-option value="CT">Connecticut</mat-option>
-                <mat-option value="DE">Delaware</mat-option>
-                <mat-option value="DC">District of Columbia</mat-option>
-                <mat-option value="FL">Florida</mat-option>
-                <mat-option value="GA">Georgia</mat-option>
-                <mat-option value="HI">Hawaii</mat-option>
-                <mat-option value="ID">Idaho</mat-option>
-                <mat-option value="IL">Illinois</mat-option>
-                <mat-option value="IN">Indiana</mat-option>
-                <mat-option value="IA">Iowa</mat-option>
-                <mat-option value="KS">Kansas</mat-option>
-                <mat-option value="KY">Kentucky</mat-option>
-                <mat-option value="LA">Louisiana</mat-option>
-                <mat-option value="ME">Maine</mat-option>
-                <mat-option value="MD">Maryland</mat-option>
-                <mat-option value="MA">Massachusetts</mat-option>
-                <mat-option value="MI">Michigan</mat-option>
-                <mat-option value="MN">Minnesota</mat-option>
-                <mat-option value="MS">Mississippi</mat-option>
-                <mat-option value="MO">Missouri</mat-option>
-                <mat-option value="MT">Montana</mat-option>
-                <mat-option value="NE">Nebraska</mat-option>
-                <mat-option value="NV">Nevada</mat-option>
-                <mat-option value="NH">New Hampshire</mat-option>
-                <mat-option value="NJ">New Jersey</mat-option>
-                <mat-option value="NM">New Mexico</mat-option>
-                <mat-option value="NY">New York</mat-option>
-                <mat-option value="NC">North Carolina</mat-option>
-                <mat-option value="ND">North Dakota</mat-option>
-                <mat-option value="OH">Ohio</mat-option>
-                <mat-option value="OK">Oklahoma</mat-option>
-                <mat-option value="OR">Oregon</mat-option>
-                <mat-option value="PA">Pennsylvania</mat-option>
-                <mat-option value="RI">Rhode Island</mat-option>
-                <mat-option value="SC">South Carolina</mat-option>
-                <mat-option value="SD">South Dakota</mat-option>
-                <mat-option value="TN">Tennessee</mat-option>
-                <mat-option value="TX">Texas</mat-option>
-                <mat-option value="UT">Utah</mat-option>
-                <mat-option value="VT">Vermont</mat-option>
-                <mat-option value="VA">Virginia</mat-option>
-                <mat-option value="WA">Washington</mat-option>
-                <mat-option value="WV">West Virginia</mat-option>
-                <mat-option value="WI">Wisconsin</mat-option>
-                <mat-option value="WY">Wyoming</mat-option>
+                <mat-option value="AL">AL</mat-option>
+                <mat-option value="AK">AK</mat-option>
+                <mat-option value="AZ">AZ</mat-option>
+                <mat-option value="AR">AR</mat-option>
+                <mat-option value="CA">CA</mat-option>
+                <mat-option value="CO">CO</mat-option>
+                <mat-option value="CT">CT</mat-option>
+                <mat-option value="DE">DE</mat-option>
+                <mat-option value="DC">DC</mat-option>
+                <mat-option value="FL">FL</mat-option>
+                <mat-option value="GA">GA</mat-option>
+                <mat-option value="HI">HI</mat-option>
+                <mat-option value="ID">ID</mat-option>
+                <mat-option value="IL">IL</mat-option>
+                <mat-option value="IN">IN</mat-option>
+                <mat-option value="IA">IA</mat-option>
+                <mat-option value="KS">KS</mat-option>
+                <mat-option value="KY">KY</mat-option>
+                <mat-option value="LA">LA</mat-option>
+                <mat-option value="ME">ME</mat-option>
+                <mat-option value="MD">MD</mat-option>
+                <mat-option value="MA">MA</mat-option>
+                <mat-option value="MI">MI</mat-option>
+                <mat-option value="MN">MN</mat-option>
+                <mat-option value="MS">MS</mat-option>
+                <mat-option value="MO">MO</mat-option>
+                <mat-option value="MT">MT</mat-option>
+                <mat-option value="NE">NE</mat-option>
+                <mat-option value="NV">NV</mat-option>
+                <mat-option value="NH">NH</mat-option>
+                <mat-option value="NJ">NJ</mat-option>
+                <mat-option value="NM">NM</mat-option>
+                <mat-option value="NY">NY</mat-option>
+                <mat-option value="NC">NC</mat-option>
+                <mat-option value="ND">ND</mat-option>
+                <mat-option value="OH">OH</mat-option>
+                <mat-option value="OK">OK</mat-option>
+                <mat-option value="OR">OR</mat-option>
+                <mat-option value="PA">PA</mat-option>
+                <mat-option value="RI">RI</mat-option>
+                <mat-option value="SC">SC</mat-option>
+                <mat-option value="SD">SD</mat-option>
+                <mat-option value="TN">TN</mat-option>
+                <mat-option value="TX">TX</mat-option>
+                <mat-option value="UT">UT</mat-option>
+                <mat-option value="VT">VT</mat-option>
+                <mat-option value="VA">VA</mat-option>
+                <mat-option value="WA">WA</mat-option>
+                <mat-option value="WV">WV</mat-option>
+                <mat-option value="WI">WI</mat-option>
+                <mat-option value="WY">WY</mat-option>
               </mat-select>
               <mat-error *ngIf="hasRequiredError('state')">
                 State is required
