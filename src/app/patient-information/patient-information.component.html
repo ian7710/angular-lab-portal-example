@@ -120,11 +120,10 @@
             <!-- Ethnicity -->
             <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>Ethnicity</mat-label>
-              <input
-                matInput
-                placeholder="Enter Ethnicity"
-                formControlName="ethnicity"
-              />
+              <mat-select placeholder="Select Ethnicity" formControlName="ethnicity">
+                <mat-option value="hispanic">Hispanic</mat-option>
+                <!-- etc. -->
+              </mat-select>
               <mat-error *ngIf="hasRequiredError('ethnicity')">
                 Ethnicity is required
               </mat-error>
