@@ -65,7 +65,7 @@
                 formControlName="dob"
                 validDate
               />
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> -->
               <mat-datepicker #picker></mat-datepicker>
               <mat-error *ngIf="hasRequiredError('dob')">
                 DOB is required and must be a valid Date.
@@ -171,23 +171,8 @@
             </mat-form-field>
           </div>
 
-          <!-- Row 6: Email -->
-          <!-- <div class="grid-row grid-1-col">
-            <mat-form-field appearance="outline" floatLabel="auto">
-              <mat-label>Email Address</mat-label>
-              <input
-                matInput
-                placeholder="example@email.com"
-                formControlName="email"
-              />
-              <mat-error *ngIf="hasRequiredError('email')">
-                Email Address is required
-              </mat-error>
-            </mat-form-field>
-          </div> -->
-
-          <!-- Row 7: Email / Cell / Home Phone -->
-          <div class="grid-row grid-3-col">
+          <!-- Row 6: Email / Cell / Home Phone -->
+          <div class="grid-row grid-3-col larger-email">
             <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>Email Address</mat-label>
               <input
@@ -226,6 +211,22 @@
               </mat-error>
             </mat-form-field>
           </div>
+
+          <!-- Row : Email -->
+          <!-- <div class="grid-row grid-1-col">
+            <mat-form-field appearance="outline" floatLabel="auto">
+              <mat-label>Email Address</mat-label>
+              <input
+                matInput
+                placeholder="example@email.com"
+                formControlName="email"
+              />
+              <mat-error *ngIf="hasRequiredError('email')">
+                Email Address is required
+              </mat-error>
+            </mat-form-field>
+          </div> -->
+
         </div>
         <!-- END LEFT COLUMN -->
 
@@ -359,22 +360,22 @@
       <!-- Action buttons -->
       <div class="actions-row">
         <!-- Previous button -->
-        <button mat-flat-button type="button" (click)="onPrevious()">
+        <button mat-raised-button type="button" (click)="onPrevious()">
           Previous
         </button>
 
         <!-- Next button -->
-        <button mat-flat-button type="submit">
+        <button mat-raised-button style="background-color: #005CBB; color: #fff;" type="submit">
           Next
         </button>
 
         <!-- Hold button -->
-        <button mat-flat-button type="button" (click)="onHold">
+        <button mat-raised-button style="background-color: #FF8F00; color: #fff;" type="button" (click)="onHold">
           Hold
         </button>
 
         <!-- Cancel button -->
-        <button mat-flat-button style="background-color: #B71C1C;" type="button" (click)="onCancel()">
+        <button mat-raised-button style="background-color: #B71C1C; color: #fff;" type="button" (click)="onCancel()">
           Cancel
         </button>
       </div>

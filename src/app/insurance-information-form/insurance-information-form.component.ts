@@ -47,21 +47,36 @@ export class InsuranceInformationFormComponent {
   constructor(private fb: FormBuilder) {
     this.insuranceForm = this.fb.group({
       // Make all fields required
+
+      // Policy Holder
       patientRelation: ['', Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       middleName: ['', Validators.required],
       dob: ['', Validators.required],
       ssn: ['', Validators.required],
-      streetAddressOne: ['', Validators.required],
-      streetAddressTwo: ['', Validators.required],
-      city: ['', Validators.required],
-      state: ['', Validators.required],
-      zipCode: ['', Validators.required],
+      policyStreetAddressOne: ['', Validators.required],
+      policyStreetAddressTwo: ['', Validators.required],
+      policyCity: ['', Validators.required],
+      policyState: ['', Validators.required],
+      policyZipCode: ['', Validators.required],
       cellPhone: ['', Validators.required],
       homePhone: ['', Validators.required],
       email: ['', Validators.required],
       employerName: ['', Validators.required],
+
+      // Insurance Company
+      insuranceCompany: ['', Validators.required],
+      insuranceIdNumber: ['', Validators.required],
+      groupNumber: ['', Validators.required],
+      effectiveDate: ['', Validators.required],
+      expirationDate: ['', Validators.required],
+      insuranceStreetAddressOne: ['', Validators.required],
+      insuranceStreetAddressTwo: ['', Validators.required],
+      insuranceCity: ['', Validators.required],
+      insuranceState: ['', Validators.required],
+      insuranceZipCode: ['', Validators.required],
+      insurancePhoneNumber: ['', Validators.required],
     });
   }
 

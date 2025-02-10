@@ -10,7 +10,7 @@
 
         <!-- Left Column -->
         <div class="left-column">
-          <mat-card-subtitle>
+          <mat-card-subtitle style="margin-bottom: .5rem;">
             Policy Holder Information
           </mat-card-subtitle>
           <!-- Row 1: Patient Relation -->
@@ -84,7 +84,7 @@
                 formControlName="dob"
                 validDate
               />
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> -->
               <mat-datepicker #picker></mat-datepicker>
               <mat-error *ngIf="hasRequiredError('dob')">
                 DOB is required and must be a valid Date.
@@ -114,9 +114,9 @@
               <input
                 matInput
                 placeholder="123 Main St"
-                formControlName="streetAddressOne"
+                formControlName="policyStreetAddressOne"
               />
-              <mat-error *ngIf="hasRequiredError('streetAddressOne')">
+              <mat-error *ngIf="hasRequiredError('policyStreetAddressOne')">
                 Street Address is required
               </mat-error>
             </mat-form-field>
@@ -130,9 +130,9 @@
               <input
                 matInput
                 placeholder="Apt / Suite #"
-                formControlName="streetAddressTwo"
+                formControlName="policyStreetAddressTwo"
               />
-              <mat-error *ngIf="hasRequiredError('streetAddressTwo')">
+              <mat-error *ngIf="hasRequiredError('policyStreetAddressTwo')">
                 Street Address is required
               </mat-error>
             </mat-form-field>
@@ -145,16 +145,16 @@
               <input
                 matInput
                 placeholder="Enter City"
-                formControlName="city"
+                formControlName="policyCity"
               />
-              <mat-error *ngIf="hasRequiredError('city')">
+              <mat-error *ngIf="hasRequiredError('policyCity')">
                 City is required
               </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>State</mat-label>
-              <mat-select placeholder="Select State" formControlName="state">
+              <mat-select placeholder="Select State" formControlName="policyState">
                 <mat-option value="AL">AL</mat-option>
                 <mat-option value="AK">AK</mat-option>
                 <mat-option value="AZ">AZ</mat-option>
@@ -207,7 +207,7 @@
                 <mat-option value="WI">WI</mat-option>
                 <mat-option value="WY">WY</mat-option>
               </mat-select>
-              <mat-error *ngIf="hasRequiredError('state')">
+              <mat-error *ngIf="hasRequiredError('policyState')">
                 State is required
               </mat-error>
             </mat-form-field>
@@ -218,16 +218,28 @@
               <input
                 matInput
                 placeholder="#####"
-                formControlName="zipCode"
+                formControlName="policyZipCode"
               />
-              <mat-error *ngIf="hasRequiredError('zipCode')">
+              <mat-error *ngIf="hasRequiredError('policyZipCode')">
                 Zip Code is required
               </mat-error>
             </mat-form-field>
           </div>
 
-          <!-- Cell / Home Phone -->
-          <div class="grid-row grid-3-col">
+          <!-- Email / Cell / Home Phone -->
+          <div class="grid-row grid-3-col larger-email">
+            <mat-form-field appearance="outline" floatLabel="auto">
+              <mat-label>Email Address</mat-label>
+              <input
+                matInput
+                placeholder="example@email.com"
+                formControlName="email"
+              />
+              <mat-error *ngIf="hasRequiredError('email')">
+                Email Address is required
+              </mat-error>
+            </mat-form-field>
+
             <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>Cell Phone</mat-label>
               <input
@@ -255,21 +267,6 @@
             </mat-form-field>
           </div>
 
-          <!-- Email -->
-          <div class="grid-row grid-1-col">
-            <mat-form-field appearance="outline" floatLabel="auto">
-              <mat-label>Email Address</mat-label>
-              <input
-                matInput
-                placeholder="example@email.com"
-                formControlName="email"
-              />
-              <mat-error *ngIf="hasRequiredError('email')">
-                Email Address is required
-              </mat-error>
-            </mat-form-field>
-          </div>
-
           <!-- Employer Name -->
           <div class="grid-row grid-1-col">
             <mat-form-field appearance="outline" floatLabel="auto">
@@ -288,11 +285,225 @@
 
         <!-- Right Column -->
         <div class="right-column">
-          <mat-card-subtitle>
+          <mat-card-subtitle style="margin-bottom: .5rem;">
             Insurance Company Information
           </mat-card-subtitle>
 
+          <!-- Row 1: Insurance Company -->
+          <div class="grid-row grid-1-col">
+            <!--  -->
+            <mat-form-field appearance="outline" floatLabel="auto">
+              <mat-label>Insurance Company</mat-label>
+              <mat-select placeholder="Select Insurance Company" formControlName="insuranceCompany">
+                <mat-option value="asian">Blue Cross Blue Shield</mat-option>
+                <mat-option value="white">Anthem</mat-option>
+                <mat-option value="black">Aetna</mat-option>
+                <!-- etc. -->
+              </mat-select>
+              <mat-error *ngIf="hasRequiredError('insuranceCompany')">
+                Insurance Company is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <!-- Row 2: Insurance Id # / Group # -->
+          <div class="grid-row grid-2-col">
+            <mat-form-field appearance="outline" floatLabel="auto">
+              <mat-label>Insurance ID #</mat-label>
+              <input
+                matInput
+                placeholder="Insurance ID #"
+                formControlName="insuranceIdNumber"
+              />
+              <mat-error *ngIf="hasRequiredError('insuranceIdNumber')">
+                Insurance ID # is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" floatLabel="auto">
+              <mat-label>Group #</mat-label>
+              <input
+                matInput
+                placeholder="Group #"
+                formControlName="groupNumber"
+              />
+              <mat-error *ngIf="hasRequiredError('groupNumber')">
+                Group # is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <!-- Row 3: Effective Date / Expiration Date -->
+          <div class="grid-row grid-3-col">
+            <mat-form-field appearance="outline" floatLabel="auto">
+              <mat-label>Effective Date</mat-label>
+              <input
+                matInput
+                placeholder="Effective Date"
+                formControlName="effectiveDate"
+              />
+              <mat-error *ngIf="hasRequiredError('effectiveDate')">
+                Effective Date is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" floatLabel="auto">
+              <mat-label>Expiration Date</mat-label>
+              <input
+                matInput
+                placeholder="Expiration Date"
+                formControlName="expirationDate"
+              />
+              <mat-error *ngIf="hasRequiredError('expirationDate')">
+                Expiration Date is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <!-- Row 4: Street Address One -->
+          <div class="grid-row grid-1-col">
+            <!-- Street Address One -->
+            <mat-form-field appearance="outline" floatLabel="auto" class="resized-form-field">
+              <mat-label>Street Address</mat-label>
+              <input
+                matInput
+                placeholder="123 Main St"
+                formControlName="insuranceStreetAddressOne"
+              />
+              <mat-error *ngIf="hasRequiredError('insuranceStreetAddressOne')">
+                Street Address is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <!-- Row 5: Street Address Two -->
+          <div class="grid-row grid-1-col">
+            <!-- Street Address Two -->
+            <mat-form-field appearance="outline" floatLabel="auto" class="resized-form-field">
+              <mat-label>Street Address Two</mat-label>
+              <input
+                matInput
+                placeholder="Apt / Suite #"
+                formControlName="insuranceStreetAddressTwo"
+              />
+              <mat-error *ngIf="hasRequiredError('insuranceStreetAddressTwo')">
+                Street Address is required
+              </mat-error>
+            </mat-form-field>
+          </div>
           
+          <!-- Row 6: City / State / Zip -->
+          <div class="grid-row grid-3-col larger-city">
+            <mat-form-field appearance="outline" floatLabel="auto">
+              <mat-label>City</mat-label>
+              <input
+                matInput
+                placeholder="Enter City"
+                formControlName="insuranceCity"
+              />
+              <mat-error *ngIf="hasRequiredError('insuranceCity')">
+                City is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" floatLabel="auto">
+              <mat-label>State</mat-label>
+              <mat-select placeholder="Select State" formControlName="insuranceState">
+                <mat-option value="AL">AL</mat-option>
+                <mat-option value="AK">AK</mat-option>
+                <mat-option value="AZ">AZ</mat-option>
+                <mat-option value="AR">AR</mat-option>
+                <mat-option value="CA">CA</mat-option>
+                <mat-option value="CO">CO</mat-option>
+                <mat-option value="CT">CT</mat-option>
+                <mat-option value="DE">DE</mat-option>
+                <mat-option value="DC">DC</mat-option>
+                <mat-option value="FL">FL</mat-option>
+                <mat-option value="GA">GA</mat-option>
+                <mat-option value="HI">HI</mat-option>
+                <mat-option value="ID">ID</mat-option>
+                <mat-option value="IL">IL</mat-option>
+                <mat-option value="IN">IN</mat-option>
+                <mat-option value="IA">IA</mat-option>
+                <mat-option value="KS">KS</mat-option>
+                <mat-option value="KY">KY</mat-option>
+                <mat-option value="LA">LA</mat-option>
+                <mat-option value="ME">ME</mat-option>
+                <mat-option value="MD">MD</mat-option>
+                <mat-option value="MA">MA</mat-option>
+                <mat-option value="MI">MI</mat-option>
+                <mat-option value="MN">MN</mat-option>
+                <mat-option value="MS">MS</mat-option>
+                <mat-option value="MO">MO</mat-option>
+                <mat-option value="MT">MT</mat-option>
+                <mat-option value="NE">NE</mat-option>
+                <mat-option value="NV">NV</mat-option>
+                <mat-option value="NH">NH</mat-option>
+                <mat-option value="NJ">NJ</mat-option>
+                <mat-option value="NM">NM</mat-option>
+                <mat-option value="NY">NY</mat-option>
+                <mat-option value="NC">NC</mat-option>
+                <mat-option value="ND">ND</mat-option>
+                <mat-option value="OH">OH</mat-option>
+                <mat-option value="OK">OK</mat-option>
+                <mat-option value="OR">OR</mat-option>
+                <mat-option value="PA">PA</mat-option>
+                <mat-option value="RI">RI</mat-option>
+                <mat-option value="SC">SC</mat-option>
+                <mat-option value="SD">SD</mat-option>
+                <mat-option value="TN">TN</mat-option>
+                <mat-option value="TX">TX</mat-option>
+                <mat-option value="UT">UT</mat-option>
+                <mat-option value="VT">VT</mat-option>
+                <mat-option value="VA">VA</mat-option>
+                <mat-option value="WA">WA</mat-option>
+                <mat-option value="WV">WV</mat-option>
+                <mat-option value="WI">WI</mat-option>
+                <mat-option value="WY">WY</mat-option>
+              </mat-select>
+              <mat-error *ngIf="hasRequiredError('insuranceState')">
+                State is required
+              </mat-error>
+            </mat-form-field>
+            
+
+            <mat-form-field appearance="outline" floatLabel="auto">
+              <mat-label>Zip Code</mat-label>
+              <input
+                matInput
+                placeholder="#####"
+                formControlName="insuranceZipCode"
+              />
+              <mat-error *ngIf="hasRequiredError('insuranceZipCode')">
+                Zip Code is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <!-- Row 7: Phone Number -->
+          <div class="grid-row grid-3-col">
+            <mat-form-field appearance="outline" floatLabel="auto">
+              <mat-label>Phone Number</mat-label>
+              <input
+                matInput
+                appPhoneMask
+                placeholder="(###) ###-####"
+                formControlName="insurancePhoneNumber"
+              />
+              <mat-error *ngIf="hasRequiredError('insurancePhoneNumber')">
+                Phone Phone is required
+              </mat-error>
+            </mat-form-field>
+          </div> 
+
+          <!-- Upload Button -->
+          <button mat-flat-button color="primary">Upload Photo ID</button>
+
+          <!-- Front / Back placeholders -->
+          <div class="photo-grid">
+            <div class="photo-placeholder">Front</div>
+            <div class="photo-placeholder">Back</div>
+          </div>
         </div>
       </div>
 
@@ -304,17 +515,17 @@
         </button>
 
         <!-- Next button -->
-        <button mat-flat-button type="submit">
+        <button mat-raised-button style="background-color: #005CBB; color: #fff;" type="submit">
           Next
         </button>
 
         <!-- Hold button -->
-        <button mat-flat-button style="background-color: #FF8F00;" type="button" (click)="onHold">
+        <button mat-raised-button style="background-color: #FF8F00; color: #fff;" type="button" (click)="onHold">
           Hold
         </button>
 
         <!-- Cancel button -->
-        <button mat-flat-button style="background-color: #B71C1C;" type="button" (click)="onCancel()">
+        <button mat-raised-button style="background-color: #B71C1C; color: #fff;" type="button" (click)="onCancel()">
           Cancel
         </button>
       </div>

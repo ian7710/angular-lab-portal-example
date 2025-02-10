@@ -148,6 +148,13 @@
   }
 }
 
+// Larger email field; smaller zipcode and state fields
+.larger-email {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr; /* Make City 2x as wide */
+  gap: 16px; /* space between columns */
+}
+
 // Larger city field; smaller zipcode and state fields
 .larger-city {
   display: grid;
