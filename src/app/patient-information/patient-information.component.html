@@ -173,7 +173,7 @@
           </div>
 
           <!-- Row 6: Email -->
-          <div class="grid-row grid-1-col">
+          <!-- <div class="grid-row grid-1-col">
             <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>Email Address</mat-label>
               <input
@@ -185,10 +185,22 @@
                 Email Address is required
               </mat-error>
             </mat-form-field>
-          </div>
+          </div> -->
 
-          <!-- Row 7: Cell / Home Phone -->
-          <div class="grid-row grid-2-col">
+          <!-- Row 7: Email / Cell / Home Phone -->
+          <div class="grid-row grid-3-col">
+            <mat-form-field appearance="outline" floatLabel="auto">
+              <mat-label>Email Address</mat-label>
+              <input
+                matInput
+                placeholder="example@email.com"
+                formControlName="email"
+              />
+              <mat-error *ngIf="hasRequiredError('email')">
+                Email Address is required
+              </mat-error>
+            </mat-form-field>
+
             <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>Cell Phone</mat-label>
               <input
