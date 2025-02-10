@@ -346,7 +346,7 @@
           </div>
 
           <!-- Upload Button -->
-          <button mat-raised-button color="primary">Upload Photo ID</button>
+          <button mat-flat-button color="primary">Upload Photo ID</button>
 
           <!-- Front / Back placeholders -->
           <div class="photo-grid">
@@ -360,22 +360,22 @@
       <!-- Action buttons -->
       <div class="actions-row">
         <!-- Previous button -->
-        <button mat-raised-button color="accent" type="button" (click)="onPrevious()">
+        <button mat-raised-button type="button" (click)="onPrevious()">
           Previous
         </button>
 
-        <!-- Hold button -->
-        <button mat-raised-button color="default" type="button" (click)="onHold">
-          Hold
-        </button>
-
         <!-- Next button -->
-        <button mat-raised-button color="primary" type="submit">
+        <button mat-flat-button type="submit">
           Next
         </button>
 
+        <!-- Hold button -->
+        <button mat-flat-button style="background-color: #FF8F00;" type="button" (click)="onHold">
+          Hold
+        </button>
+
         <!-- Cancel button -->
-        <button mat-raised-button color="warn" type="button" (click)="onCancel()">
+        <button mat-flat-button style="background-color: #B71C1C;" type="button" (click)="onCancel()">
           Cancel
         </button>
       </div>
