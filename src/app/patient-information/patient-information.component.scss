@@ -136,6 +136,7 @@
   z-index: 2 !important;
 }
 
+// Form field styles
 .mat-mdc-form-field {
 
   .mat-mdc-text-field-wrapper {
@@ -147,5 +148,11 @@
   }
 }
 
+// Larger city field; smaller zipcode and state fields
+.larger-city {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr; /* Make City 2x as wide */
+  gap: 16px; /* space between columns */
+}
 
 
