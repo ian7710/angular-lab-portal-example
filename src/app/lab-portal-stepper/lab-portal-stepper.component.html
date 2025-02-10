@@ -5,41 +5,46 @@
   <!-- Stepper -->
   <mat-stepper [linear]="isLinear" labelPosition="bottom" #stepper>
     <!-- Step One -->
-    <mat-step [stepControl]="firstFormGroup" label="General">
+    <mat-step label="General">
       
     </mat-step>
 
     <!-- Step Two -->
-    <mat-step [stepControl]="secondFormGroup" label="Patient" [editable]="true">
-      <app-patient-information [stepper]="stepper"></app-patient-information>
-    </mat-step>
-
-    <!-- Step Three -->
-    <mat-step [stepControl]="thirdFormGroup" label="Insurance">
-      <app-insurance-information-form [stepper]="stepper"></app-insurance-information-form>
-    </mat-step>
-
-    <!-- Step Four -->
-    <mat-step label="Guarantor">
+    <mat-step label="Patient Lookup">
       
     </mat-step>
 
+    <!-- Step Three -->
+    <mat-step label="Patient">
+      <app-patient-information [stepper]="stepper"></app-patient-information>
+    </mat-step>
+
+    <!-- Step Four -->
+    <mat-step label="Insurance">
+      <app-insurance-information-form [stepper]="stepper"></app-insurance-information-form>
+    </mat-step>
+
     <!-- Step Five -->
+    <mat-step label="Guarantor">
+      <app-guarantor-information-form [stepper]="stepper"></app-guarantor-information-form>
+    </mat-step>
+
+    <!-- Step Six -->
     <mat-step label="Diagnosis">
       
     </mat-step>
 
-    <!-- Step Six -->
+    <!-- Step Seven -->
     <mat-step label="Test">
       
     </mat-step>
 
-    <!-- Step Seven -->
+    <!-- Step Eight -->
     <mat-step label="Schedule">
       
     </mat-step>
 
-    <!-- Step Eight -->
+    <!-- Step Nine -->
     <mat-step label="Print">
       
     </mat-step>

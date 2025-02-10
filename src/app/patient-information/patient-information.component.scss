@@ -8,6 +8,7 @@
   /* Increase this gap for more space in the middle on desktops */
   column-gap: 4rem;
   row-gap: 1rem;
+  margin-bottom: 5rem;
 }
 
 .left-column,
@@ -49,7 +50,7 @@
 
 .photo-placeholder {
   width: 100%;
-  height: 100px;
+  height: 200px;
   border: 1px solid #aaa;
   display: flex;
   align-items: center;

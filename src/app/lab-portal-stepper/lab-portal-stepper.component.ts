@@ -7,6 +7,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { PatientInformationComponent } from '../patient-information/patient-information.component';
 import { OrderInformationBarComponent } from '../order-information-bar/order-information-bar.component';
 import { InsuranceInformationFormComponent } from '../insurance-information-form/insurance-information-form.component';
+import { GuarantorInformationFormComponent } from '../guarantor-information-form/guarantor-information-form.component';
 
 /**
  * @title Stepper overview
@@ -25,7 +26,8 @@ import { InsuranceInformationFormComponent } from '../insurance-information-form
     MatInputModule,
     PatientInformationComponent,
     OrderInformationBarComponent,
-    InsuranceInformationFormComponent
+    InsuranceInformationFormComponent,
+    GuarantorInformationFormComponent
   ],
   encapsulation: ViewEncapsulation.None
 })
