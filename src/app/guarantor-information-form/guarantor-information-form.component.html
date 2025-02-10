@@ -69,7 +69,7 @@
             </mat-form-field>
           </div>
 
-          <!-- Row 3: DOB -->
+          <!-- Row 3: DOB / SSN -->
           <div class="grid-row grid-3-col">
             <!-- DOB -->
             <mat-form-field appearance="outline" floatLabel="auto" class="resized-form-field">
@@ -85,6 +85,20 @@
               <mat-datepicker #picker></mat-datepicker>
               <mat-error *ngIf="hasRequiredError('dob')">
                 DOB is required and must be a valid Date.
+              </mat-error>
+            </mat-form-field>
+
+            <!-- SSN -->
+            <mat-form-field appearance="outline" floatLabel="auto" class="resized-form-field">
+              <mat-label>SSN</mat-label>
+              <input
+                matInput
+                appSsnMask
+                placeholder="###-##-####"
+                formControlName="ssn"
+              />
+              <mat-error *ngIf="hasRequiredError('ssn')">
+                SSN is required
               </mat-error>
             </mat-form-field>
           </div>

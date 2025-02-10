@@ -54,6 +54,7 @@ export class GuarantorInformationFormComponent {
       lastName: ['', Validators.required],
       middleName: ['', Validators.required],
       dob: ['', Validators.required],
+      ssn: ['', Validators.required],
       cellPhone: ['', Validators.required],
       homePhone: ['', Validators.required],
       email: ['', Validators.required],
