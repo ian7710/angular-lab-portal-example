@@ -1,27 +1,27 @@
 /* theme.scss */
-@use '@angular/material' as mat;
+// @use '@angular/material' as mat;
 
-// 1. Define a custom primary palette (blue, shade 500)
-$my-primary-palette: mat.define-palette(mat.$blue-palette, 500);
+// // 1. Define a custom primary palette (blue, shade 500)
+// $my-primary-palette: mat.define-palette(mat.$blue-palette, 500);
 
-// 2. Define a custom accent palette (blue, using "accent" shades)
-$my-accent-palette: mat.define-palette(mat.$blue-palette, A200, A100, A400);
+// // 2. Define a custom accent palette (blue, using "accent" shades)
+// $my-accent-palette: mat.define-palette(mat.$blue-palette, A200, A100, A400);
 
-// 3. Build the theme configuration object
-$my-theme: mat.define-theme((
-  color: (
-    primary: $my-primary-palette,
-    accent: $my-accent-palette,
-    // (Optional) Add a warn palette if you like
-    // warn: mat.define-palette(mat.$red-palette),
-  ),
-  // 4. Set the density to -2 (makes components more compact)
-  density: -2,
-));
+// // 3. Build the theme configuration object
+// $my-theme: mat.define-theme((
+//   color: (
+//     primary: $my-primary-palette,
+//     accent: $my-accent-palette,
+//     // (Optional) Add a warn palette if you like
+//     // warn: mat.define-palette(mat.$red-palette),
+//   ),
+//   // 4. Set the density to -2 (makes components more compact)
+//   density: -2,
+// ));
 
 
 // 4. Include global styles and all component-specific theme styles
-@include mat.all-component-themes($my-theme);
+// @include mat.all-component-themes($my-theme);
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
