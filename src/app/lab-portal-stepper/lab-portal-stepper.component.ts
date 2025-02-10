@@ -6,6 +6,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatButtonModule} from '@angular/material/button';
 import { PatientInformationComponent } from '../patient-information/patient-information.component';
 import { OrderInformationBarComponent } from '../order-information-bar/order-information-bar.component';
+import { InsuranceInformationFormComponent } from '../insurance-information-form/insurance-information-form.component';
 
 /**
  * @title Stepper overview
@@ -24,6 +25,7 @@ import { OrderInformationBarComponent } from '../order-information-bar/order-inf
     MatInputModule,
     PatientInformationComponent,
     OrderInformationBarComponent,
+    InsuranceInformationFormComponent
   ],
   encapsulation: ViewEncapsulation.None
 })
@@ -36,6 +38,9 @@ export class StepperOverviewExample {
   });
   secondFormGroup = this._formBuilder.group({
     secondCtrl: ['', Validators.required],
+  });
+  thirdFormGroup = this._formBuilder.group({
+    thirdCtrl: ['', Validators.required],
   });
   isLinear = false;
 }

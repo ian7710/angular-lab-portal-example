@@ -1,0 +1,18 @@
+/**************************************************************
+ * Desktop Layout (Default)
+ **************************************************************/
+.insurance-grid-container {
+  display: grid;
+  /* Two columns: left = 3fr (wider), right = 2fr (narrower) */
+  grid-template-columns: 3fr 2fr;
+  /* Increase this gap for more space in the middle on desktops */
+  column-gap: 4rem;
+  row-gap: 1rem;
+}
+
+.left-column,
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem; /* vertical spacing between rows */
+}

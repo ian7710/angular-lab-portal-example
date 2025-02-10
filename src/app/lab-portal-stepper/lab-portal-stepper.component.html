@@ -15,8 +15,8 @@
     </mat-step>
 
     <!-- Step Three -->
-    <mat-step label="Insurance">
-      <p>Insurance</p>
+    <mat-step [stepControl]="thirdFormGroup" label="Insurance">
+      <app-insurance-information-form [stepper]="stepper"></app-insurance-information-form>
     </mat-step>
 
     <!-- Step Four -->
