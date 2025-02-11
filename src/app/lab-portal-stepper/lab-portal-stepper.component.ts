@@ -8,6 +8,7 @@ import { PatientInformationComponent } from '../patient-information/patient-info
 import { OrderInformationBarComponent } from '../order-information-bar/order-information-bar.component';
 import { InsuranceInformationFormComponent } from '../insurance-information-form/insurance-information-form.component';
 import { GuarantorInformationFormComponent } from '../guarantor-information-form/guarantor-information-form.component';
+import { GeneralInformationFormComponent } from '../general-information-form/general-information-form.component';
 
 /**
  * @title Stepper overview
@@ -24,6 +25,7 @@ import { GuarantorInformationFormComponent } from '../guarantor-information-form
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    GeneralInformationFormComponent,
     PatientInformationComponent,
     OrderInformationBarComponent,
     InsuranceInformationFormComponent,

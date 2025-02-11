@@ -6,7 +6,7 @@
   <mat-stepper [linear]="isLinear" labelPosition="bottom" #stepper>
     <!-- Step One -->
     <mat-step label="General">
-      
+      <app-general-information-form [stepper]="stepper"></app-general-information-form>
     </mat-step>
 
     <!-- Step Two -->

@@ -14,7 +14,7 @@
           <!-- Row 1: First / Middle / Last -->
           <div class="grid-row grid-3-col">
             <!-- First Name -->
-            <mat-form-field appearance="outline" floatLabel="auto" class="resized-form-field">
+            <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>First Name</mat-label>
               <input
                 matInput
@@ -27,7 +27,7 @@
             </mat-form-field>
 
             <!-- Middle Name -->
-            <mat-form-field appearance="outline" floatLabel="auto" class="resized-form-field">
+            <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>Middle Name</mat-label>
               <input
                 matInput
@@ -40,7 +40,7 @@
             </mat-form-field>
 
             <!-- Last Name -->
-            <mat-form-field appearance="outline" floatLabel="auto" class="resized-form-field">
+            <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>Last Name</mat-label>
               <input
                 matInput
@@ -56,7 +56,7 @@
           <!-- Row 2: DOB / Gender / SSN -->
           <div class="grid-row grid-3-col">
             <!-- DOB -->
-            <mat-form-field appearance="outline" floatLabel="auto" class="resized-form-field">
+            <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>Date of Birth</mat-label>
               <input
                 matInput
@@ -73,7 +73,7 @@
             </mat-form-field>
 
             <!-- Gender -->
-            <mat-form-field appearance="outline" floatLabel="auto" class="resized-form-field">
+            <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>Gender</mat-label>
               <mat-select placeholder="Select Gender" formControlName="gender">
                 <mat-option value="male">Male</mat-option>
@@ -87,7 +87,7 @@
             </mat-form-field>
 
             <!-- SSN -->
-            <mat-form-field appearance="outline" floatLabel="auto" class="resized-form-field">
+            <mat-form-field appearance="outline" floatLabel="auto">
               <mat-label>SSN</mat-label>
               <input
                 matInput
@@ -370,7 +370,7 @@
         </button>
 
         <!-- Hold button -->
-        <button mat-raised-button style="background-color: #FF8F00; color: #fff;" type="button" (click)="onHold">
+        <button mat-raised-button style="background-color: #FF8F00; color: #fff;" type="button" (click)="onHold()">
           Hold
         </button>
 

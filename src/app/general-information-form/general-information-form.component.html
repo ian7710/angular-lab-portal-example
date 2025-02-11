@@ -1,0 +1,240 @@
+<mat-card style="background-color: white; margin-top: 20px;">
+  <mat-card-title style="margin-bottom: 20px; margin-left: 20px; margin-top: 20px;">
+    General Information
+  </mat-card-title>
+  <mat-card-content>
+    <!-- Begin Reactive Form -->
+    <form [formGroup]="generalForm" (ngSubmit)="onSave()">
+      <!-- Outer grid: two columns -->
+      <div class="general-grid-container">
+
+        <!-- Left Column -->
+        <div class="left-column">
+
+          <!-- Row 1: Ordering Provider -->
+          <div class="grid-row grid-2-col">
+            <mat-form-field appearance="outline" floatLabel="auto">
+              <mat-label>Ordering Provider</mat-label>
+              <mat-select placeholder="Select Ordering Provider" formControlName="orderingProvider">
+                <mat-option value="1">1</mat-option>
+                <mat-option value="2">2</mat-option>
+                <mat-option value="3">3</mat-option>
+                <mat-option value="other">Other</mat-option>
+              </mat-select>
+              <mat-error *ngIf="hasRequiredError('orderingProvider')">
+                Ordering Provider is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <!-- Row 2: Priority -->
+          <div class="grid-row grid-2-col">
+            <mat-form-field appearance="outline" floatLabel="auto">
+              <mat-label>Priority</mat-label>
+              <mat-select placeholder="Select Priority" formControlName="priority">
+                <mat-option value="1">1</mat-option>
+                <mat-option value="2">2</mat-option>
+                <mat-option value="3">3</mat-option>
+                <mat-option value="other">Other</mat-option>
+              </mat-select>
+              <mat-error *ngIf="hasRequiredError('priority')">
+                Priority is required
+              </mat-error>
+            </mat-form-field>
+
+            <div>
+              <mat-checkbox formControlName="patientIsFasting">Patient is Fasting</mat-checkbox>
+              <!-- <mat-error *ngIf="hasRequiredError('patientIsFasting')">
+                Patient is required
+              </mat-error> -->
+            </div>
+          </div>
+
+          <!-- Row 3: Order Date / Order Time / Now Btn -->
+          <div class="grid-row grid-4-col">
+            <!-- Order Date -->
+            <mat-form-field appearance="outline" floatLabel="auto">
+              <mat-label>Order Date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                placeholder="MM/DD/YYYY"
+                formControlName="orderDate"
+                validDate
+              />
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="hasRequiredError('orderDate')">
+                Order Date is required and must be a valid Date.
+              </mat-error>
+            </mat-form-field>
+
+            <!-- Order Time -->
+            <mat-form-field appearance="outline" floatLabel="auto">
+              <mat-label>Order Time</mat-label>
+              <input
+                matInput
+                placeholder="Enter Order Time"
+                formControlName="orderTime"
+              />
+              <mat-error *ngIf="hasRequiredError('orderTime')">
+                Order Time is required
+              </mat-error>
+            </mat-form-field>
+
+            <!-- Now button -->
+            <button mat-flat-button style="background-color: #005CBB; color: #fff; height: 52px;" type="button" (click)="onNow()">
+              Now
+            </button>
+          </div>
+
+          <!-- Row 4: Collection Date / Collection Time / Now Btn / Schedule Btn -->
+          <div class="grid-row grid-4-col">
+            <!-- Collection Date -->
+            <mat-form-field appearance="outline" floatLabel="auto">
+              <mat-label>Collection Date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                placeholder="MM/DD/YYYY"
+                formControlName="collectionDate"
+                validDate
+              />
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="hasRequiredError('collectionDate')">
+                Collection Date is required and must be a valid Date.
+              </mat-error>
+            </mat-form-field>
+
+            <!-- Collection Time -->
+            <mat-form-field appearance="outline" floatLabel="auto">
+              <mat-label>Collection Time</mat-label>
+              <input
+                matInput
+                placeholder="Enter Collection Time"
+                formControlName="collectionTime"
+              />
+              <mat-error *ngIf="hasRequiredError('collectionTime')">
+                Collection Time is required
+              </mat-error>
+            </mat-form-field>
+
+            <!-- Now button -->
+            <button mat-flat-button style="background-color: #005CBB; color: #fff; height: 52px;" type="button" (click)="onNow()">
+              Now
+            </button>
+
+            <!-- Schedule button -->
+            <button mat-flat-button style="background-color: #005CBB; color: #fff; height: 52px;" type="button" (click)="onSchedule()">
+              Schedule
+            </button>
+          </div>
+
+          <!-- Row 5: Collected By -->
+          <div class="grid-row grid-2-col">
+            <mat-form-field appearance="outline" floatLabel="auto">
+              <mat-label>Collected By</mat-label>
+              <mat-select placeholder="Select Collected By" formControlName="collectedBy">
+                <mat-option value="1">1</mat-option>
+                <mat-option value="2">2</mat-option>
+                <mat-option value="3">3</mat-option>
+                <mat-option value="other">Other</mat-option>
+              </mat-select>
+              <mat-error *ngIf="hasRequiredError('collectedBy')">
+                Collected By is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-column">
+          <!-- Row 1: Copy To Provider -->
+          <div class="grid-row grid-2-col">
+            <mat-form-field appearance="outline" floatLabel="auto">
+              <mat-label>Copy To Provider</mat-label>
+              <mat-select placeholder="Select Copy To Provider" formControlName="copyToProvider">
+                <mat-option value="1">1</mat-option>
+                <mat-option value="2">2</mat-option>
+                <mat-option value="3">3</mat-option>
+                <mat-option value="other">Other</mat-option>
+              </mat-select>
+              <mat-error *ngIf="hasRequiredError('copyToProvider')">
+                Copy To Provider is required
+              </mat-error>
+            </mat-form-field>
+
+            <!-- Add Provider Btn -->
+            <button mat-flat-button style="background-color: #005CBB; color: #fff; height: 52px;" type="button" (click)="onAddProvider()">
+              Add Provider
+            </button>
+          </div>
+
+          <!-- Row 2: Copy To Providers Table -->
+          <div>
+            <mat-card-subtitle style="margin-bottom: .5rem;">
+              Copy To Providers
+            </mat-card-subtitle>
+
+            <!-- Table -->
+            <!-- Data source will need to be updated with an actual array name -->
+            <table mat-table [dataSource]="dataSource">
+
+              <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+              <!-- Name Column -->
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+              </ng-container>
+              
+              <!-- Method Column -->
+              <ng-container matColumnDef="method">
+                <th mat-header-cell *matHeaderCellDef> Method </th>
+                <td mat-cell *matCellDef="let element"> {{element.method}} </td>
+              </ng-container>
+
+              <!-- Address/Fax Column -->
+              <ng-container matColumnDef="addressFax">
+                <th mat-header-cell *matHeaderCellDef> Address/Fax </th>
+                <td mat-cell *matCellDef="let element"> {{element.addressFax}} </td>
+              </ng-container>
+
+              <!-- Delete Column -->
+              <ng-container matColumnDef="delete">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element"> 
+                  <button style="background-color: transparent; cursor: pointer; border: none; font-weight: 600;" type="button" (click)="onDeleteRow()">
+                    {{element.delete}}
+                  </button> 
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="actions-row">     
+        <!-- Next button -->
+        <button mat-raised-button style="background-color: #005CBB; color: #fff;" type="submit">
+          Next
+        </button>
+      
+        <!-- Hold button -->
+        <button mat-raised-button style="background-color: #FF8F00; color: #fff;" type="button" (click)="onHold()">
+          Hold
+        </button>
+      
+        <!-- Cancel button -->
+        <button mat-raised-button style="background-color: #B71C1C; color: #fff;" type="button" (click)="onCancel()">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card> 

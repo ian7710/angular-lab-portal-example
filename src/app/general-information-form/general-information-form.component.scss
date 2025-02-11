@@ -1,0 +1,75 @@
+/**************************************************************
+ * Desktop Layout (Default)
+ **************************************************************/
+.general-grid-container {
+  display: grid;
+  /* Two columns: left = 3fr (wider), right = 2fr (narrower) */
+  grid-template-columns: 3fr 2fr;
+  /* Increase this gap for more space in the middle on desktops */
+  column-gap: 4rem;
+  row-gap: 1rem;
+  margin-bottom: 5rem;
+}
+
+.left-column,
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem; /* vertical spacing between rows */
+}
+
+/* Nested row grids (some rows have 2 or 3 columns) */
+.grid-row {
+  display: grid;
+  gap: 1rem;
+}
+
+.grid-1-col {
+  grid-template-columns: 1fr;
+}
+
+.grid-2-col {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3-col {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4-col {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Make certain fields (e.g. address lines) fill the full width. */
+.full-width {
+  width: 100%;
+}
+
+// Copy to Providers Table
+table {
+  border: 2px black solid ;
+}
+
+.mat-column-name,
+.mat-column-method,
+.mat-column-addressFax {
+  border-right: 2px solid ;
+}
+
+.mat-column-delete {
+  text-align: center;
+  padding: 0 4px;
+}
+
+.mat-mdc-row .mat-mdc-cell {
+  border-bottom: none;
+  border-top: none;
+}
+
+/* Action buttons row at the bottom */
+.actions-row {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
