@@ -18,7 +18,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { ValidDateDirective } from '../date-mask.directive';
 import { MatStepper } from '@angular/material/stepper';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { PatientLookupDialogComponent } from '../patient-lookup-dialog/patient-lookup-dialog.component';
+
 
 
 @Component({
@@ -63,7 +65,7 @@ export class PatientInformationComponent implements OnInit {
   races: string[] = ['American Indian or Alaska Native','Asian','Black or African American','White','Other'];
   states: string[] = ['AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','...'];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private dialog: MatDialog) {
     this.patientForm = this.fb.group({
       // Make all fields required
       firstName: ['', Validators.required],
@@ -126,6 +128,29 @@ export class PatientInformationComponent implements OnInit {
   // * Look Up patients
   onPatientLookup() {
     console.log('Patient Found...');
+
+    const dialogRef = this.dialog.open(PatientLookupDialogComponent, {
+      width: '600px',
+      // You can pass data into the dialog here if needed
+      data: {
+        /* any data you want to pass */
+      }
+    });
+
+    // Handle the result once the dialog is closed
+    dialogRef.afterClosed().subscribe(selectedPatient => {
+      if (selectedPatient) {
+        console.log('Patient selected:', selectedPatient);
+        // e.g., populate form controls with the returned patient
+        this.patientForm.patchValue({
+          firstName: selectedPatient.name,  // Just an example
+          // Map other properties if your object has them
+          // ...
+        });
+      } else {
+        console.log('Dialog closed without selecting a patient');
+      }
+    });
   }
 
 
