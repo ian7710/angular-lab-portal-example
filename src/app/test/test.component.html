@@ -1,0 +1,229 @@
+<!-- Search Field -->
+<mat-form-field appearance="fill">
+    <mat-label>Search for test by code, description, or CPT-4</mat-label>
+    <input
+      matInput
+      [(ngModel)]="search"
+      placeholder="Type to filter..."
+    />
+  </mat-form-field>
+  
+  <!-- Table 1: Matching Tests (only shown if search is not empty and results exist) -->
+  <div *ngIf="search && filteredData.length > 0">
+    <h4>Matching Tests</h4>
+  
+    <table mat-table [dataSource]="filteredData" class="mat-elevation-z1">
+      <!-- Code Column -->
+      <ng-container matColumnDef="code">
+        <th mat-header-cell *matHeaderCellDef> Code </th>
+        <td mat-cell *matCellDef="let item" (click)="handleRowClick(item)">
+          {{ item.code }}
+        </td>
+      </ng-container>
+  
+      <!-- Description Column -->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let item" (click)="handleRowClick(item)">
+          {{ item.description }}
+        </td>
+      </ng-container>
+  
+      <!-- Fasting Column -->
+      <ng-container matColumnDef="fasting">
+        <th mat-header-cell *matHeaderCellDef> Fasting </th>
+        <td mat-cell *matCellDef="let item" (click)="handleRowClick(item)">
+          {{ item.fasting }}
+        </td>
+      </ng-container>
+  
+      <!-- ABN Column -->
+      <ng-container matColumnDef="abn">
+        <th mat-header-cell *matHeaderCellDef> ABN </th>
+        <td mat-cell *matCellDef="let item" (click)="handleRowClick(item)">
+          {{ item.abn }}
+        </td>
+      </ng-container>
+  
+      <!-- Volume Column -->
+      <ng-container matColumnDef="volume">
+        <th mat-header-cell *matHeaderCellDef> Volume </th>
+        <td mat-cell *matCellDef="let item" (click)="handleRowClick(item)">
+          {{ item.volume }}
+        </td>
+      </ng-container>
+  
+      <!-- Jar Column -->
+      <ng-container matColumnDef="jar">
+        <th mat-header-cell *matHeaderCellDef> Jar </th>
+        <td mat-cell *matCellDef="let item" (click)="handleRowClick(item)">
+          {{ item.jar }}
+        </td>
+      </ng-container>
+  
+      <!-- Header and Row Declarations -->
+      <tr mat-header-row *matHeaderRowDef="matchingColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: matchingColumns;"></tr>
+    </table>
+  </div>
+  
+  <!-- Table 2: Selected Tests -->
+  <h4>Selected Tests</h4>
+  
+  <table
+    mat-table
+    [dataSource]="selectedTests"
+    class="mat-elevation-z1"
+  >
+    <!-- Code Column -->
+    <ng-container matColumnDef="code">
+      <th mat-header-cell *matHeaderCellDef> Code </th>
+      <td mat-cell *matCellDef="let item" (click)="toggleRowExpansion(item.code)">
+        {{ item.code }}
+      </td>
+    </ng-container>
+  
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let item" (click)="toggleRowExpansion(item.code)">
+        {{ item.description }}
+      </td>
+    </ng-container>
+  
+    <!-- Fasting Column -->
+    <ng-container matColumnDef="fasting">
+      <th mat-header-cell *matHeaderCellDef> Fasting </th>
+      <td mat-cell *matCellDef="let item" (click)="toggleRowExpansion(item.code)">
+        {{ item.fasting }}
+      </td>
+    </ng-container>
+  
+    <!-- ABN Column -->
+    <ng-container matColumnDef="abn">
+      <th mat-header-cell *matHeaderCellDef> ABN </th>
+      <td mat-cell *matCellDef="let item" (click)="toggleRowExpansion(item.code)">
+        {{ item.abn }}
+      </td>
+    </ng-container>
+  
+    <!-- Volume Column -->
+    <ng-container matColumnDef="volume">
+      <th mat-header-cell *matHeaderCellDef> Volume </th>
+      <td mat-cell *matCellDef="let item" (click)="toggleRowExpansion(item.code)">
+        {{ item.volume }}
+      </td>
+    </ng-container>
+  
+    <!-- Jar Column -->
+    <ng-container matColumnDef="jar">
+      <th mat-header-cell *matHeaderCellDef> Jar </th>
+      <td mat-cell *matCellDef="let item" (click)="toggleRowExpansion(item.code)">
+        {{ item.jar }}
+      </td>
+    </ng-container>
+  
+    <!-- Questions Column -->
+    <ng-container matColumnDef="questions">
+      <th mat-header-cell *matHeaderCellDef> Questions </th>
+      <td mat-cell *matCellDef="let item">
+        <ng-container *ngIf="item.questions && item.questions.length > 0; else noQuestions">
+          <button
+            mat-button
+            color="accent"
+            (click)="toggleRowExpansion(item.code); $event.stopPropagation();"
+          >
+            {{ item.questions.length }}
+            Question{{item.questions.length > 1 ? 's' : ''}}
+          </button>
+        </ng-container>
+        <ng-template #noQuestions>No Questions</ng-template>
+      </td>
+    </ng-container>
+  
+    <!-- Header row -->
+    <tr mat-header-row *matHeaderRowDef="selectedColumns"></tr>
+    <!-- Data row -->
+    <tr
+      mat-row
+      *matRowDef="let row; columns: selectedColumns"
+    ></tr>
+  
+    <!-- Expanded Detail Row -->
+    <ng-container matColumnDef="expandedDetail">
+      <tr
+        mat-row
+        *matRowDef="let row; when: isRowExpanded"
+        class="expanded-row"
+      >
+        <td mat-cell [attr.colspan]="selectedColumns.length">
+          <!-- Inner table for questions -->
+          <table class="inner-table mat-elevation-z0" *ngIf="row.questions?.length">
+            <thead>
+              <tr>
+                <th>Question</th>
+                <th>Answer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let question of row.questions; let i = index">
+                <td>{{ question }}</td>
+                <td>
+                  <!-- Generate random input type -->
+                  <ng-container [ngSwitch]="getRandomInputType(question)">
+                    <!-- Text -->
+                    <ng-container *ngSwitchCase="'text'">
+                      <mat-form-field appearance="fill">
+                        <mat-label>Answer for {{ question }}</mat-label>
+                        <input matInput />
+                      </mat-form-field>
+                    </ng-container>
+  
+                    <!-- Radio -->
+                    <ng-container *ngSwitchCase="'radio'">
+                      <mat-radio-group>
+                        <mat-radio-button value="Option 1">Option 1</mat-radio-button>
+                        <mat-radio-button value="Option 2">Option 2</mat-radio-button>
+                      </mat-radio-group>
+                    </ng-container>
+  
+                    <!-- Checkbox -->
+                    <ng-container *ngSwitchCase="'checkbox'">
+                      <mat-checkbox>Option 1</mat-checkbox>
+                      <mat-checkbox>Option 2</mat-checkbox>
+                    </ng-container>
+  
+                    <!-- Select -->
+                    <ng-container *ngSwitchCase="'select'">
+                      <mat-form-field appearance="fill">
+                        <mat-label>Select an option</mat-label>
+                        <mat-select>
+                          <mat-option value="">None</mat-option>
+                          <mat-option value="Option 1">Option 1</mat-option>
+                          <mat-option value="Option 2">Option 2</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </ng-container>
+  
+                    <!-- Default (fallback) -->
+                    <ng-container *ngSwitchDefault>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Answer for {{ question }}</mat-label>
+                        <input matInput />
+                      </mat-form-field>
+                    </ng-container>
+                  </ng-container>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </ng-container>
+  </table>
+  
+  <!-- If no selected tests -->
+  <div *ngIf="selectedTests.length === 0" class="text-center mt-3">
+    {{ search ? 'No results found.' : 'No tests selected.' }}
+  </div>
+  

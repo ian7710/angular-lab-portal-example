@@ -1,0 +1,87 @@
+:host {
+    display: block;
+    padding: 1rem;
+  
+    // Style the search form field
+    mat-form-field {
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+  
+    // Style section headings
+    h4 {
+      margin-top: 1rem;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+  
+    // Style for the Angular Material table
+    table.mat-table {
+      width: 100%;
+      margin-bottom: 1rem;
+  
+      // Header cells
+      th.mat-header-cell {
+        background-color: #f7f7f7;
+        font-weight: 600;
+        text-transform: uppercase;
+        padding: 0.75rem;
+      }
+  
+      // Data cells
+      td.mat-cell {
+        padding: 0.75rem;
+      }
+  
+      // Apply pointer cursor and hover style to rows
+      tr.mat-row {
+        cursor: pointer; /* Always show pointer cursor */
+        transition: background-color 0.2s ease;
+  
+        &:hover {
+          background-color: #fafafa;
+        }
+      }
+    }
+  
+    // Expanded row (where questions appear)
+    .expanded-row {
+      background-color: #fcfcfc;
+  
+      td {
+        padding: 1rem;
+      }
+  
+      // Inner table that shows questions
+      .inner-table {
+        width: 100%;
+        border-collapse: collapse;
+  
+        thead {
+          tr {
+            background-color: #f2f2f2;
+          }
+        }
+  
+        th,
+        td {
+          padding: 0.5rem;
+          border: 1px solid #ddd;
+        }
+  
+        th {
+          font-weight: 600;
+        }
+      }
+    }
+  
+    // Utility classes
+    .text-center {
+      text-align: center;
+    }
+  
+    .mt-3 {
+      margin-top: 1rem;
+    }
+  }
+  
