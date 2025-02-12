@@ -1,7 +1,13 @@
 <mat-card style="background-color: white; margin-top: 20px;">
-  <mat-card-title style="margin-bottom: 20px; margin-left: 20px; margin-top: 20px;">
-    Patient Information
-  </mat-card-title>
+  <div class="patient-header">
+    <mat-card-title style="margin-bottom: 20px; margin-left: 20px; margin-top: 20px;">
+      Patient Information
+    </mat-card-title>
+    <!-- Patient Lookup button -->
+    <button mat-flat-button style="background-color: #005CBB; color: #fff;" (click)="onPatientLookup()">
+      Patient Lookup
+    </button>
+  </div>
   <mat-card-content>
     <!-- Begin Reactive Form -->
     <form [formGroup]="patientForm" (ngSubmit)="onSave()">

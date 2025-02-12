@@ -1,6 +1,12 @@
 /**************************************************************
  * Desktop Layout (Default)
  **************************************************************/
+.patient-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 .patient-grid-container {
   display: grid;
   /* Two columns: left = 3fr (wider), right = 2fr (narrower) */

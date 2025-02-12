@@ -18,12 +18,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { ValidDateDirective } from '../date-mask.directive';
 import { MatStepper } from '@angular/material/stepper';
-
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @Component({
   standalone: true,
-  imports:[FormsModule,
+  imports:[
+    NgIf,
+    FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
@@ -32,7 +34,17 @@ import { MatStepper } from '@angular/material/stepper';
     ValidDateDirective,
     MatCardModule,
     MatSelectModule,
-  NgIf,SsnMaskDirective, MatToolbarModule, MatMenuModule, MatDividerModule, MatIconModule, PhoneMaskDirective, MatDatepickerModule, MatNativeDateModule, MatSidenavModule],
+    SsnMaskDirective, 
+    MatToolbarModule, 
+    MatMenuModule, 
+    MatDividerModule, 
+    MatIconModule, 
+    PhoneMaskDirective, 
+    MatDatepickerModule, 
+    MatNativeDateModule, 
+    MatSidenavModule,
+    MatDialogModule,
+  ],
   selector: 'app-patient-information',
   templateUrl: './patient-information.component.html',
   styleUrls: ['./patient-information.component.scss'],
@@ -109,6 +121,11 @@ export class PatientInformationComponent implements OnInit {
   // #TODO Will add function for this button later
   onHold() {
     console.log('Form on hold...')
+  }
+
+  // * Look Up patients
+  onPatientLookup() {
+    console.log('Patient Found...');
   }
 
 
