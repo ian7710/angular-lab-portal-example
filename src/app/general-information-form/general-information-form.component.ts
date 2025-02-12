@@ -1,26 +1,18 @@
 import { NgIf } from '@angular/common';
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { SsnMaskDirective } from '../ssn-mask.directive';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatIconModule } from '@angular/material/icon';
-import { PhoneMaskDirective } from '../phone-mask.directive';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { PhoneNumberDirective } from '../ssn-mask-two.directive';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { ValidDateDirective } from '../date-mask.directive';
 import { MatStepper } from '@angular/material/stepper';
 import { MatCheckbox } from '@angular/material/checkbox';
-import {MatTimepickerModule} from '@angular/material/timepicker';
 import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import {MatTimepickerModule} from '@angular/material/timepicker';
 
 export interface ProviderCopy {
   name: string;
@@ -29,35 +21,39 @@ export interface ProviderCopy {
   delete: string;
 }
 
-const ELEMENT_DATA: ProviderCopy[] = [
-  {name: 'Robert Harris', method: 'Portal', addressFax: '', delete: 'X'},
-  {name: 'Alice Jones', method: 'Fax', addressFax: '(215) 555-1212', delete: 'X'},
-  {name: 'Ron Smith', method: 'Mail', addressFax: '123 West Ave Norristown PA', delete: 'X'},
-];
-
 @Component({
   selector: 'app-general-information-form',
-  imports: [FormsModule,
-      ReactiveFormsModule,
-      MatFormFieldModule,
-      MatInputModule,
-      MatButtonModule,
-      PhoneNumberDirective,
-      ValidDateDirective,
-      MatCardModule,
-      MatSelectModule,
-      MatCheckbox,
-      // MatTimepickerModule,
-      MatTableModule,
-    NgIf,SsnMaskDirective, MatToolbarModule, MatMenuModule, MatDividerModule, MatIconModule, PhoneMaskDirective, MatDatepickerModule, MatNativeDateModule, MatSidenavModule],
+  standalone: true,
+  imports: [
+    NgIf,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    ValidDateDirective,
+    MatCardModule,
+    MatSelectModule,
+    MatCheckbox,
+    MatTableModule,
+    // MatTimepickerModule, 
+    MatDatepickerModule, 
+    MatIconModule
+  ],
   templateUrl: './general-information-form.component.html',
   styleUrl: './general-information-form.component.scss'
 })
 export class GeneralInformationFormComponent {
+  // Sample data
+  public data: ProviderCopy[] = [
+    {name: 'Robert Harris', method: 'Portal', addressFax: '', delete: 'X'},
+    {name: 'Alice Jones', method: 'Fax', addressFax: '(215) 555-1212', delete: 'X'},
+    {name: 'Ron Smith', method: 'Mail', addressFax: '123 West Ave Norristown PA', delete: 'X'},
+  ];
 
   // Table Info
   displayedColumns: string[] = ['name', 'method', 'addressFax', 'delete'];
-  dataSource = ELEMENT_DATA;
+  dataSource = this.data;
 
   // Add an Input property for the stepper
   @Input()
@@ -125,14 +121,33 @@ export class GeneralInformationFormComponent {
     console.log('Open Schedule...')
   }
 
-  // #TODO Will add function for this button later
+  // * Add new provider copy upon click
   onAddProvider() {
+    // * Create a new ProviderCopy object
+    const newProvider: ProviderCopy = {
+      name: 'New Provider',
+      method: 'Fax',         // or 'Portal', 'Mail', etc.
+      addressFax: '123 Main St. Example City',
+      delete: 'X'
+    }
+
+    // * Push the new provider to the data array
+    this.data.push(newProvider);
+
+    // *Update the dataSource so the table re-renders
+    this.dataSource = [...this.data];
+
     console.log('Added Provider...')
   }
 
-  // #TODO Will add function for this button later
-  onDeleteRow() {
-    console.log('Row Deleted...')
+  // * Deletes the current selected row
+  onDeleteRow(row: ProviderCopy) {
+    const index = this.data.indexOf(row);
+    if(index >= 0) {
+      this.data.splice(index, 1);
+      // * Reassign dataSource so the table updates
+      this.dataSource = [...this.data];
+    }
   }
 
   puserForm!: FormGroup;
