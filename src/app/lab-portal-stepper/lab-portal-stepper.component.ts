@@ -10,6 +10,7 @@ import { InsuranceInformationFormComponent } from '../insurance-information-form
 import { GuarantorInformationFormComponent } from '../guarantor-information-form/guarantor-information-form.component';
 import { GeneralInformationFormComponent } from '../general-information-form/general-information-form.component';
 import { TestComponent } from '../test/test.component';
+import { DiagnosisComponent } from '../diagnosis/diagnosis.component';
 
 /**
  * @title Stepper overview
@@ -32,6 +33,7 @@ import { TestComponent } from '../test/test.component';
     InsuranceInformationFormComponent,
     GuarantorInformationFormComponent,
     TestComponent,
+    DiagnosisComponent
   ],
   encapsulation: ViewEncapsulation.None
 })

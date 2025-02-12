@@ -1,0 +1,201 @@
+<!-- Search Field -->
+<mat-form-field appearance="fill">
+    <mat-label>Search for diagnosis by code, description, complication, etc.</mat-label>
+    <input matInput [(ngModel)]="search" placeholder="Type to filter..." />
+  </mat-form-field>
+  
+  <!-- Matching Diagnoses Table (only shown if search is not empty and we have matches) -->
+  <div *ngIf="search && filteredData.length > 0">
+    <h4>Matching Diagnoses</h4>
+  
+    <table mat-table [dataSource]="filteredData" class="mat-elevation-z1">
+      <!-- Code Column -->
+      <ng-container matColumnDef="code">
+        <th mat-header-cell *matHeaderCellDef>ICD-10-CM</th>
+        <td mat-cell *matCellDef="let item" (click)="handleRowClick(item)">
+          {{ item.code }}
+        </td>
+      </ng-container>
+  
+      <!-- Description Column -->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Description</th>
+        <td mat-cell *matCellDef="let item" (click)="handleRowClick(item)">
+          {{ item.description }}
+        </td>
+      </ng-container>
+  
+      <!-- Complication Column -->
+      <ng-container matColumnDef="complication">
+        <th mat-header-cell *matHeaderCellDef>Complication</th>
+        <td mat-cell *matCellDef="let item" (click)="handleRowClick(item)">
+          {{ item.complication }}
+        </td>
+      </ng-container>
+  
+      <!-- Severity Column -->
+      <ng-container matColumnDef="severity">
+        <th mat-header-cell *matHeaderCellDef>Severity</th>
+        <td mat-cell *matCellDef="let item" (click)="handleRowClick(item)">
+          {{ item.severity }}
+        </td>
+      </ng-container>
+  
+      <!-- Notes Column -->
+      <ng-container matColumnDef="notes">
+        <th mat-header-cell *matHeaderCellDef>Notes</th>
+        <td mat-cell *matCellDef="let item" (click)="handleRowClick(item)">
+          {{ item.notes }}
+        </td>
+      </ng-container>
+  
+      <!-- Table Header and Row Definitions -->
+      <tr mat-header-row *matHeaderRowDef="matchingColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: matchingColumns;"></tr>
+    </table>
+  </div>
+  
+  <!-- Selected Diagnoses Table -->
+  <h4>Selected Diagnoses</h4>
+  <table mat-table [dataSource]="selectedDiagnoses" class="mat-elevation-z1">
+    <!-- Code Column -->
+    <ng-container matColumnDef="code">
+      <th mat-header-cell *matHeaderCellDef>ICD-10-CM</th>
+      <td mat-cell *matCellDef="let item" (click)="toggleRowExpansion(item.code)">
+        {{ item.code }}
+      </td>
+    </ng-container>
+  
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Description</th>
+      <td mat-cell *matCellDef="let item" (click)="toggleRowExpansion(item.code)">
+        {{ item.description }}
+      </td>
+    </ng-container>
+  
+    <!-- Complication Column -->
+    <ng-container matColumnDef="complication">
+      <th mat-header-cell *matHeaderCellDef>Complication</th>
+      <td mat-cell *matCellDef="let item" (click)="toggleRowExpansion(item.code)">
+        {{ item.complication }}
+      </td>
+    </ng-container>
+  
+    <!-- Severity Column -->
+    <ng-container matColumnDef="severity">
+      <th mat-header-cell *matHeaderCellDef>Severity</th>
+      <td mat-cell *matCellDef="let item" (click)="toggleRowExpansion(item.code)">
+        {{ item.severity }}
+      </td>
+    </ng-container>
+  
+    <!-- Notes Column -->
+    <ng-container matColumnDef="notes">
+      <th mat-header-cell *matHeaderCellDef>Notes</th>
+      <td mat-cell *matCellDef="let item" (click)="toggleRowExpansion(item.code)">
+        {{ item.notes }}
+      </td>
+    </ng-container>
+  
+    <!-- Questions Column -->
+    <ng-container matColumnDef="questions">
+      <th mat-header-cell *matHeaderCellDef>Questions</th>
+      <td mat-cell *matCellDef="let item">
+        <ng-container *ngIf="item.questions && item.questions.length > 0; else noQuestions">
+          <button
+            mat-button
+            color="accent"
+            (click)="toggleRowExpansion(item.code); $event.stopPropagation();"
+          >
+            {{ item.questions.length }} Question{{ item.questions.length > 1 ? 's' : '' }}
+          </button>
+        </ng-container>
+        <ng-template #noQuestions>No Questions</ng-template>
+      </td>
+    </ng-container>
+  
+    <!-- Table Header Row -->
+    <tr mat-header-row *matHeaderRowDef="selectedColumns"></tr>
+  
+    <!-- Data Row -->
+    <tr mat-row *matRowDef="let row; columns: selectedColumns"></tr>
+  
+    <!-- Expanded Detail Row -->
+    <ng-container matColumnDef="expandedDetail">
+      <tr
+        mat-row
+        *matRowDef="let row; when: isRowExpanded"
+        class="expanded-row"
+      >
+        <td mat-cell [attr.colspan]="selectedColumns.length">
+          <!-- Inner table for questions -->
+          <table class="inner-table mat-elevation-z0" *ngIf="row.questions?.length">
+            <thead>
+              <tr>
+                <th>Question</th>
+                <th>Answer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let question of row.questions; let i = index">
+                <td>{{ question }}</td>
+                <td>
+                  <!-- Generate random input type, just like your Test example -->
+                  <ng-container [ngSwitch]="getRandomInputType(question)">
+                    <!-- Text -->
+                    <ng-container *ngSwitchCase="'text'">
+                      <mat-form-field appearance="fill">
+                        <mat-label>Answer for {{ question }}</mat-label>
+                        <input matInput />
+                      </mat-form-field>
+                    </ng-container>
+  
+                    <!-- Radio -->
+                    <ng-container *ngSwitchCase="'radio'">
+                      <mat-radio-group>
+                        <mat-radio-button value="Option 1">Option 1</mat-radio-button>
+                        <mat-radio-button value="Option 2">Option 2</mat-radio-button>
+                      </mat-radio-group>
+                    </ng-container>
+  
+                    <!-- Checkbox -->
+                    <ng-container *ngSwitchCase="'checkbox'">
+                      <mat-checkbox>Option 1</mat-checkbox>
+                      <mat-checkbox>Option 2</mat-checkbox>
+                    </ng-container>
+  
+                    <!-- Select -->
+                    <ng-container *ngSwitchCase="'select'">
+                      <mat-form-field appearance="fill">
+                        <mat-label>Select an option</mat-label>
+                        <mat-select>
+                          <mat-option value="">None</mat-option>
+                          <mat-option value="Option 1">Option 1</mat-option>
+                          <mat-option value="Option 2">Option 2</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </ng-container>
+  
+                    <!-- Default (fallback) -->
+                    <ng-container *ngSwitchDefault>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Answer for {{ question }}</mat-label>
+                        <input matInput />
+                      </mat-form-field>
+                    </ng-container>
+                  </ng-container>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </ng-container>
+  </table>
+  
+  <!-- If no selected diagnoses -->
+  <div *ngIf="selectedDiagnoses.length === 0" class="text-center mt-3">
+    {{ search ? 'No results found.' : 'No diagnoses selected.' }}
+  </div>
+  
